@@ -3,7 +3,7 @@
     "version": "0.1.0",
     "manifest_version": 1,
     "description": "Automate simple NPCs in combat.",
-    "icon": "./icon.png",
+    "icon": "https://bonewheelmaster.github.io/Owlbear-Extension-TBD/icon.png",
     "author": "bonewheelmaster",
     "background_url": "https://bonewheelmaster.github.io/Owlbear-Extension-TBD/"
 }
