@@ -1,7 +1,7 @@
 {
-    "rootDir": "src",
     "compilerOptions": {
+        "rootDir": "./src",
         "strict": true,
-        "outDir": "dist"
+        "outDir": "../dist"
     }
 }
