@@ -5,6 +5,6 @@
     "description": "Automate simple NPCs in combat.",
     "icon": "https://bonewheelmaster.github.io/Owlbear-Extension-TBD/icon.png",
     "author": "bonewheelmaster",
-    "background_url": "https://bonewheelmaster.github.io/Owlbear-Extension-TBD",
+    "background_url": "https://bonewheelmaster.github.io/Owlbear-Extension-TBD/dist/main.js",
     "homepage_url": "https://github.com/bonewheelmaster/Owlbear-Extension-TBD"
 }
