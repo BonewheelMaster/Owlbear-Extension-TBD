@@ -1,4 +1,4 @@
-import OBR from "@owlbear-rodeo/sdk";
-const message = "Hello World! V3";
+import OBR from "./sdk/src/index.js";
+const message = "Hello World! V4";
 console.log(message);
 OBR.notification.show(message);
