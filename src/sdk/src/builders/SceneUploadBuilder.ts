@@ -1,4 +1,4 @@
-import {
+import.js {
   GridColor,
   GridLineType,
   GridMeasurement,

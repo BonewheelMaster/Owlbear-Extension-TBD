@@ -1,6 +1,6 @@
-import { isMessage } from "./Message";
-import { EventEmitter } from "events";
-import { v4 as uuid } from "uuid";
+import { isMessage } from "./Message.js";
+import { EventEmitter } from "events.js";
+import { v4 as uuid } from "uuid.js";
 
 class MessageBus extends EventEmitter {
   ready: boolean = false;

@@ -1,7 +1,7 @@
-import { Matrix } from "../Matrix";
-import { Vector2 } from "../Vector2";
-import { Vector3 } from "../Vector3";
-import { Item } from "./Item";
+import { Matrix } from "../Matrix.js";
+import { Vector2 } from "../Vector2.js";
+import { Vector3 } from "../Vector3.js";
+import { Item } from "./Item.js";
 
 export interface Uniform {
   name: string;

@@ -1,6 +1,6 @@
-import { ImageContent } from "./ImageContent";
-import { ImageGrid } from "./ImageGrid";
-import { Item } from "./Item";
+import { ImageContent } from "./ImageContent.js";
+import { ImageGrid } from "./ImageGrid.js";
+import { Item } from "./Item.js";
 
 export interface BillboardStyle {
   maxViewScale?: number;

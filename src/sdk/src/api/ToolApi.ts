@@ -1,7 +1,7 @@
-import { normalizeIconPaths } from "../common/normalize";
-import MessageBus from "../messages/MessageBus";
-import { Metadata } from "../types";
-import {
+import { normalizeIconPaths } from "../common/normalize.js";
+import MessageBus from "../messages/MessageBus.js";
+import { Metadata } from "../types.js";
+import.js {
   KeyEvent,
   Tool,
   ToolAction,

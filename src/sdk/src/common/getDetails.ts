@@ -1,4 +1,4 @@
-import { decode } from "js-base64";
+import { decode } from "js-base64.js";
 
 export function getDetails() {
   const urlSearchParams = new URLSearchParams(window.location.search);

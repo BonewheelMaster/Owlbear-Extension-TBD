@@ -1,6 +1,6 @@
-import PlayerApi from "../api/PlayerApi";
-import { Light, LightType } from "../types/items/Light";
-import { GenericItemBuilder } from "./GenericItemBuilder";
+import PlayerApi from "../api/PlayerApi.js";
+import { Light, LightType } from "../types/items/Light.js";
+import { GenericItemBuilder } from "./GenericItemBuilder.js";
 
 export class LightBuilder extends GenericItemBuilder<LightBuilder> {
   private _sourceRadius: number;

@@ -1,7 +1,7 @@
-import { enablePatches, produceWithPatches } from "immer";
-import MessageBus from "../messages/MessageBus";
-import { Item } from "../types";
-import {
+import { enablePatches, produceWithPatches } from "immer.js";
+import MessageBus from "../messages/MessageBus.js";
+import { Item } from "../types.js";
+import.js {
   DispatchInteractionUpdate,
   InteractionManager,
   StopInteraction,

@@ -1,6 +1,6 @@
-import PlayerApi from "../api/PlayerApi";
-import { BlendMode, Effect, EffectType, Uniform } from "../types/items/Effect";
-import { GenericItemBuilder } from "./GenericItemBuilder";
+import PlayerApi from "../api/PlayerApi.js";
+import { BlendMode, Effect, EffectType, Uniform } from "../types/items/Effect.js";
+import { GenericItemBuilder } from "./GenericItemBuilder.js";
 
 export class EffectBuilder extends GenericItemBuilder<EffectBuilder> {
   private _width: number;

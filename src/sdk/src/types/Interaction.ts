@@ -1,4 +1,4 @@
-import { Draft } from "immer";
+import { Draft } from "immer.js";
 
 export type StopInteraction = () => void;
 export type UpdateInteraction<State> = (draft: Draft<State>) => void;

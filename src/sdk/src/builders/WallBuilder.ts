@@ -1,7 +1,7 @@
-import PlayerApi from "../api/PlayerApi";
-import { Vector2 } from "../types/Vector2";
-import { Wall } from "../types/items/Wall";
-import { GenericItemBuilder } from "./GenericItemBuilder";
+import PlayerApi from "../api/PlayerApi.js";
+import { Vector2 } from "../types/Vector2.js";
+import { Wall } from "../types/items/Wall.js";
+import { GenericItemBuilder } from "./GenericItemBuilder.js";
 
 export class WallBuilder extends GenericItemBuilder<WallBuilder> {
   private _points: Vector2[];

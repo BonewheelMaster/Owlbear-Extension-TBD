@@ -1,8 +1,8 @@
-import MessageBus from "../../messages/MessageBus";
-import { BoundingBox } from "../../types/BoundingBox";
-import { ItemFilter } from "../../types/ItemFilter";
-import { Item } from "../../types/items/Item";
-import { Draft, enablePatches, produceWithPatches } from "immer";
+import MessageBus from "../../messages/MessageBus.js";
+import { BoundingBox } from "../../types/BoundingBox.js";
+import { ItemFilter } from "../../types/ItemFilter.js";
+import { Item } from "../../types/items/Item.js";
+import { Draft, enablePatches, produceWithPatches } from "immer.js";
 
 enablePatches();
 

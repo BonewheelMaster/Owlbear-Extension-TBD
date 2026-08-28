@@ -1,5 +1,5 @@
-import MessageBus from "../messages/MessageBus";
-import {
+import MessageBus from "../messages/MessageBus.js";
+import.js {
   ImageAssetType,
   ImageDownload,
   ImageUpload,

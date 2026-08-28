@@ -1,4 +1,4 @@
-import {
+import.js {
   ImageGrid,
   RichText,
   TextContent,
@@ -7,7 +7,7 @@ import {
   TextSize,
   Vector2,
 } from "../types";
-import { ImageUpload } from "../types/Assets";
+import { ImageUpload } from "../types/Assets.js";
 
 export class ImageUploadBuilder {
   private _upload: ImageUpload;

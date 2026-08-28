@@ -1,6 +1,6 @@
-import PlayerApi from "../api/PlayerApi";
-import { Billboard, BillboardStyle, ImageContent, ImageGrid } from "../types";
-import { GenericItemBuilder } from "./GenericItemBuilder";
+import PlayerApi from "../api/PlayerApi.js";
+import { Billboard, BillboardStyle, ImageContent, ImageGrid } from "../types.js";
+import { GenericItemBuilder } from "./GenericItemBuilder.js";
 
 export class BillboardBuilder extends GenericItemBuilder<BillboardBuilder> {
   private _image: ImageContent;
