@@ -2,17 +2,18 @@
   "name": "Owlbear-Extension-TBD",
   "version": "0.1.0",
   "description": "Automate the movement of simple NPCs.",
-  "main": "main.js",
+  "main": "src/main.ts",
   "repository": "git@github.com:bonewheelmaster/Owlbear-Extension-TBD.git",
   "author": "BonewheelMaster <bonewheelmaster@proton.me>",
   "license": "MIT",
   "scripts": {
-    "build": "tsc --build"
+    "build": "tsc --build && vite build"
   },
   "dependencies": {
     "@owlbear-rodeo/sdk": "^3.1.0",
     "@types/events": "^3.0.3",
     "@types/uuid": "^11.0.0",
-    "typescript": "^7.0.2"
+    "typescript": "^7.0.2",
+    "vite": "^8.2.2"
   }
 }
