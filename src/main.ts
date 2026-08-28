@@ -1,4 +1,4 @@
-import OBR from "./sdk/src/index.js";
+import OBR from "./sdk/src/index";
 
 const message : string = "Hello World! V4";
 
