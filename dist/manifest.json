@@ -3,13 +3,13 @@
     "version": "0.1.0",
     "manifest_version": 1,
     "description": "Automate the movement of simple NPCs.",
-    "icon": "https://bonewheelmaster.github.io/Owlbear-Extension-TBD/dist/icon.png",
+    "icon": "https://bonewheelmaster.github.io/Owlbear-Extension-TBD/icon.png",
     "author": "bonewheelmaster",
-    "background_url": "https://bonewheelmaster.github.io/Owlbear-Extension-TBD/dist/background.html",
+    "background_url": "https://bonewheelmaster.github.io/Owlbear-Extension-TBD/background.html",
     "homepage_url": "https://github.com/bonewheelmaster/Owlbear-Extension-TBD",
     "action": {
         "title": "NPC Control Panel",
-        "icon": "https://bonewheelmaster.github.io/Owlbear-Extension-TBD/dist/popover.svg",
-        "popover": "https://bonewheelmaster.github.io/Owlbear-Extension-TBD/dist/popover.html"
+        "icon": "https://bonewheelmaster.github.io/Owlbear-Extension-TBD/popover.svg",
+        "popover": "https://bonewheelmaster.github.io/Owlbear-Extension-TBD/popover.html"
     }
 }
