@@ -21,7 +21,7 @@ function removeToken(context) {
 }
 const menuAdd = {
     id: ID,
-    icons: [{ icon: "https://bonewheelmaster.github.io/Owlbear-Extension-TBD/icon.png",
+    icons: [{ icon: "https://bonewheelmaster.github.io/Owlbear-Extension-TBD/popover.svg",
             label: "Instill thought"
             //            , filter: { every: [ { key: "layer", value: "CHARACTER" }
             //                               , { key: "metadata", value: { STATE_TAG: {} } }
