@@ -7,7 +7,7 @@ const META = "metadata." + STATE_TAG;
 function addToken(context) {
     OBR.scene.items.updateItems(context.items, (items) => {
         for (let item of items) {
-            console.log(item.metadata); // TODO rm
+            console.log(item); // TODO rm
             item.metadata[STATE_TAG] = {
                 "enabled": true,
             };
