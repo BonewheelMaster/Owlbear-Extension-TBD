@@ -33,8 +33,7 @@ const menuInfo = {
     id: ID + "/menuInfo",
     icons: [{ icon: "https://bonewheelmaster.github.io/Owlbear-Extension-TBD/popover.svg"
             , label: "Info -> Console"
-            , filter: { roles: ["GM"]
-                      } as ContextMenuIconFilter // Ditto above, and same below
+            , filter: { roles: ["GM"] } as ContextMenuIconFilter // Ditto above, and same below
            }],
     onClick: (itemInfo),
 };
