@@ -24,8 +24,8 @@ const menuAdd = {
     id: ID + "/menuAdd",
     icons: [{ icon: "https://bonewheelmaster.github.io/Owlbear-Extension-TBD/popover.svg",
             label: "Instill thought",
-            filter: { every: [{ key: "layer", value: "CHARACTER" },
-                    { key: "roles", value: "GM" }
+            filter: { every: [{ key: "layer", value: "CHARACTER" }
+                    //                               , { key: "roles", value: "GM" }
                     // Needed because the operator key throws a typeerror otherwise  VV
                     //                               , { key: META + ".enabled", value: true, operator: "!=" } as KeyFilter
                 ] }
@@ -36,8 +36,9 @@ const menuRemove = {
     id: ID + "/menuRemove",
     icons: [{ icon: "https://bonewheelmaster.github.io/Owlbear-Extension-TBD/icon.png",
             label: "Uninstill thought",
-            filter: { every: [{ key: "layer", value: "CHARACTER" },
-                    { key: "roles", value: "GM" },
+            filter: { every: [{ key: "layer", value: "CHARACTER" }
+                    //                               , { key: "roles", value: "GM" }
+                    ,
                     { key: META + ".enabled", value: true }
                 ] }
         }],
