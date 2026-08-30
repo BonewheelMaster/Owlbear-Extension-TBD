@@ -9,7 +9,7 @@
     "homepage_url": "https://github.com/bonewheelmaster/Owlbear-Extension-TBD",
     "action": {
         "title": "NPC Control Panel",
-        "icon": "https://bonewheelmaster.github.io/Owlbear-Extension-TBD/popover.svg",
-        "popover": "https://bonewheelmaster.github.io/Owlbear-Extension-TBD/popover.html"
+        "icon": "https://bonewheelmaster.github.io/Owlbear-Extension-TBD/panel.svg",
+        "popover": "https://bonewheelmaster.github.io/Owlbear-Extension-TBD/panel.html"
     }
 }
