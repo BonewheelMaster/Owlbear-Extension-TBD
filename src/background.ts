@@ -3,7 +3,7 @@ import OBR, { ContextMenuContext, ContextMenuIconFilter, KeyFilter, ItemFilter }
     from "@owlbear-rodeo/sdk";
 
 // TODO change below to correct name
-const ID        = "Owlbear-Extension-TBD/io.github.bonewheelmaster";
+const ID    = "Owlbear-Extension-TBD/io.github.bonewheelmaster";
 const STATE = `${ID}/state`
 
 function itemInfo(context : ContextMenuContext) {

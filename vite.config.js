@@ -3,6 +3,6 @@ export default {
         outDir: "dist"
     },
     publicDir: "public",
-    input: ["background.html", "popover.html"],
+    input: ["background.html", "panel.html"],
     base: './',
 }
