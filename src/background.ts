@@ -6,8 +6,9 @@ console.log(message);
 
 var counter : number = 0;
 
+// TODO change below to correct name
 const menuItem = {
-    id: "1337",
+    id: "Owlbear-Extension-TBD/io.github.bonewheelmaster",
     icons: [{icon: "https://bonewheelmaster.github.io/Owlbear-Extension-TBD/icon.png", label: "Test"}],
     onClick: (() => {counter++; OBR.notification.show(counter.toString());}),
 };
