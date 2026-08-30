@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@owlbear-rodeo/sdk": "^3.1.0",
+    "@types/": "owlbear-rodeo/sdk",
     "@types/events": "^3.0.3",
     "@types/uuid": "^11.0.0",
     "typescript": "^7.0.2",
