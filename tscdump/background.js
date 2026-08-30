@@ -2,15 +2,14 @@
 import OBR from "@owlbear-rodeo/sdk";
 // TODO change below to correct name
 const ID = "Owlbear-Extension-TBD/io.github.bonewheelmaster";
-const STATE_TAG = `${ID}/state`;
-const META = "metadata." + STATE_TAG;
+const STATE = `${ID}/state`;
 function itemInfo(context) {
     console.log(context.items);
 }
 function addToken(context) {
     OBR.scene.items.updateItems(context.items, (items) => {
         for (let item of items) {
-            item.metadata[STATE_TAG] = {
+            item.metadata[STATE] = {
                 "enabled": true,
             };
         }
@@ -19,7 +18,7 @@ function addToken(context) {
 function removeToken(context) {
     OBR.scene.items.updateItems(context.items, (items) => {
         for (let item of items) {
-            item.metadata[STATE_TAG] = {};
+            item.metadata[STATE] = {};
         }
     });
 }
@@ -38,7 +37,7 @@ const menuAdd = {
             filter: { every: [{ key: "layer", value: "CHARACTER" }
                     // Needed because the operator key throws a typeerror otherwise  VV
                     ,
-                    { key: META + ".enabled", value: true, operator: "!=" }
+                    { key: ["metadata", STATE, "enabled"], value: true, operator: "!=" }
                 ],
                 roles: ["GM"] } // Ditto above, and same below
         }],
@@ -49,7 +48,7 @@ const menuRemove = {
     icons: [{ icon: "https://bonewheelmaster.github.io/Owlbear-Extension-TBD/icon.png",
             label: "Uninstill thought",
             filter: { every: [{ key: "layer", value: "CHARACTER" },
-                    { key: META + ".enabled", value: true }
+                    { key: ["metadata", STATE, "enabled"], value: true }
                 ],
                 roles: ["GM"]
             }
