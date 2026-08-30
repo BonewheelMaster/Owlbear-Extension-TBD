@@ -4,4 +4,5 @@ export default {
     },
     publicDir: "public",
     input: ["background.html", "popover.html"],
+    base: './',
 }
