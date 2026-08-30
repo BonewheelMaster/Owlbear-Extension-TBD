@@ -10,6 +10,7 @@ function addToken(context) {
             item.metadata[STATE_TAG] = {
                 "enabled": true
             };
+            console.log(item.metadata); // TODO rm
         }
     });
 }
