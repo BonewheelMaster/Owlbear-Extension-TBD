@@ -7,7 +7,7 @@ console.log(message);
 const menuItem = {
     id: "1337",
     icons: [{icon: "https://bonewheelmaster.github.io/Owlbear-Extension-TBD/icon.png", label: "Test"}],
-    onClick: (() => {}),
+    onClick: (() => {OBR.notification.show("Hello");}),
 };
 
 OBR.onReady(() => {
