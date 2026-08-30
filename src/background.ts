@@ -1,5 +1,6 @@
 //import OBR from "@owlbear-rodeo/sdk";
-import OBR, { ContextMenuContext, KeyFilter } from "@owlbear-rodeo/sdk";
+import OBR, { ContextMenuContext, ContextMenuIconFilter, KeyFilter }
+    from "@owlbear-rodeo/sdk";
 
 // TODO change below to correct name
 const ID        = "Owlbear-Extension-TBD/io.github.bonewheelmaster";
@@ -28,10 +29,11 @@ const menuAdd = {
     icons: [{ icon: "https://bonewheelmaster.github.io/Owlbear-Extension-TBD/popover.svg"
             , label: "Instill thought"
             , filter: { every: [ { key: "layer", value: "CHARACTER" }
-//                               , { key: "roles", value: "GM" }
                                // Needed because the operator key throws a typeerror otherwise  VV
-//                               , { key: META + ".enabled", value: true, operator: "!=" } as KeyFilter
-                               ] }
+                               , { key: META + ".enabled", value: true, operator: "!=" } as KeyFilter
+                               ]
+                      , roles: ["GM"]
+                      } as ContextMenuIconFilter // Ditto above, and same below
            }],
     onClick: (addToken),
 };
@@ -41,9 +43,10 @@ const menuRemove = {
     icons: [{ icon: "https://bonewheelmaster.github.io/Owlbear-Extension-TBD/icon.png"
             , label: "Uninstill thought"
             , filter: { every: [ { key: "layer", value: "CHARACTER" }
-//                               , { key: "roles", value: "GM" }
                                , { key: META + ".enabled", value: true }
-                               ] }
+                               ]
+                      , roles: ["GM"]
+                      } as ContextMenuIconFilter
             }],
     onClick: (removeToken),
 };
