@@ -1,0 +1,1 @@
+import"./modulepreload-polyfill-P2Xu9kJm.js";console.log(`Hello world from panel`);
