@@ -7,14 +7,11 @@ const ID        = "Owlbear-Extension-TBD/io.github.bonewheelmaster";
 const STATE_TAG = `${ID}/state`
 const META      = "metadata." + STATE_TAG
 
-function addToken(context : ContextMenuContext) {
+function itemInfo(context : ContextMenuContext) {
     console.log(context.items);
-    var old_items = OBR.scene.items.getItems((item) => { return context.items.includes(item) });
-    old_items.then((items) => {
-        for (let item of items) {
-            console.log(item.metadata);
-            }
-    });
+}
+
+function addToken(context : ContextMenuContext) {
     OBR.scene.items.updateItems(context.items, (items) => {
         for (let item of items) {
             item.metadata[STATE_TAG] = {
@@ -23,6 +20,7 @@ function addToken(context : ContextMenuContext) {
         }
     });
 }
+
 function removeToken(context : ContextMenuContext) {
     OBR.scene.items.updateItems(context.items, (items) => {
         for (let item of items) {
@@ -30,6 +28,16 @@ function removeToken(context : ContextMenuContext) {
         }
     });
 }
+
+const menuInfo = {
+    id: ID + "/menuInfo",
+    icons: [{ icon: "https://bonewheelmaster.github.io/Owlbear-Extension-TBD/popover.svg"
+            , label: "Info -> Console"
+            , filter: { roles: ["GM"]
+                      } as ContextMenuIconFilter // Ditto above, and same below
+           }],
+    onClick: (itemInfo),
+};
 
 const menuAdd = {
     id: ID + "/menuAdd",
@@ -59,6 +67,7 @@ const menuRemove = {
 };
 
 OBR.onReady(() => {
+    OBR.contextMenu.create(menuInfo);
     OBR.contextMenu.create(menuAdd);
     OBR.contextMenu.create(menuRemove);
 })

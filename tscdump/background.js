@@ -4,14 +4,10 @@ import OBR from "@owlbear-rodeo/sdk";
 const ID = "Owlbear-Extension-TBD/io.github.bonewheelmaster";
 const STATE_TAG = `${ID}/state`;
 const META = "metadata." + STATE_TAG;
-function addToken(context) {
+function itemInfo(context) {
     console.log(context.items);
-    var old_items = OBR.scene.items.getItems((item) => { return context.items.includes(item); });
-    old_items.then((items) => {
-        for (let item of items) {
-            console.log(item.metadata);
-        }
-    });
+}
+function addToken(context) {
     OBR.scene.items.updateItems(context.items, (items) => {
         for (let item of items) {
             item.metadata[STATE_TAG] = {
@@ -27,6 +23,15 @@ function removeToken(context) {
         }
     });
 }
+const menuInfo = {
+    id: ID + "/menuInfo",
+    icons: [{ icon: "https://bonewheelmaster.github.io/Owlbear-Extension-TBD/popover.svg",
+            label: "Info -> Console",
+            filter: { roles: ["GM"]
+            } // Ditto above, and same below
+        }],
+    onClick: (itemInfo),
+};
 const menuAdd = {
     id: ID + "/menuAdd",
     icons: [{ icon: "https://bonewheelmaster.github.io/Owlbear-Extension-TBD/popover.svg",
@@ -53,6 +58,7 @@ const menuRemove = {
     onClick: (removeToken),
 };
 OBR.onReady(() => {
+    OBR.contextMenu.create(menuInfo);
     OBR.contextMenu.create(menuAdd);
     OBR.contextMenu.create(menuRemove);
 });
