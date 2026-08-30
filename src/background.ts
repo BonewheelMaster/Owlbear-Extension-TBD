@@ -23,7 +23,7 @@ function removeToken(context : ContextMenuContext) {
 }
 
 const menuAdd = {
-    id: ID,
+    id: ID + "/menuAdd",
     icons: [{ icon: "https://bonewheelmaster.github.io/Owlbear-Extension-TBD/popover.svg"
             , label: "Instill thought"
 //            , filter: { every: [ { key: "layer", value: "CHARACTER" }
@@ -34,7 +34,7 @@ const menuAdd = {
 };
 
 const menuRemove = {
-    id: ID,
+    id: ID + "/menuAdd",
     icons: [{ icon: "https://bonewheelmaster.github.io/Owlbear-Extension-TBD/icon.png"
             , label: "Uninstill thought"
             , filter: { every: [ { key: "layer", value: "CHARACTER" }
@@ -45,6 +45,6 @@ const menuRemove = {
 };
 
 OBR.onReady(() => {
-    OBR.contextMenu.create(menuRemove);
     OBR.contextMenu.create(menuAdd);
+    OBR.contextMenu.create(menuRemove);
 })
