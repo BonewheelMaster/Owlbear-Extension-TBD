@@ -22,10 +22,10 @@ function removeToken(context) {
 const menuAdd = {
     id: ID + "/menuAdd",
     icons: [{ icon: "https://bonewheelmaster.github.io/Owlbear-Extension-TBD/popover.svg",
-            label: "Instill thought"
-            //            , filter: { every: [ { key: "layer", value: "CHARACTER" }
-            //                               , { key: "metadata", value: { STATE_TAG: {} } }
-            //                               ] }
+            label: "Instill thought",
+            filter: { every: [{ key: "layer", value: "CHARACTER" },
+                    { key: "metadata", value: { STATE_TAG: {} } }
+                ] }
         }],
     onClick: (addToken),
 };
@@ -33,8 +33,8 @@ const menuRemove = {
     id: ID + "/menuRemove",
     icons: [{ icon: "https://bonewheelmaster.github.io/Owlbear-Extension-TBD/icon.png",
             label: "Uninstill thought",
-            filter: { every: [{ key: "layer", value: "CHARACTER" }
-                    //                               , { key: "metadata", value: { STATE_TAG: { "enabled": true } } }
+            filter: { every: [{ key: "layer", value: "CHARACTER" },
+                    { key: "metadata", value: { STATE_TAG: { "enabled": true } } }
                 ] }
         }],
     onClick: (removeToken),
