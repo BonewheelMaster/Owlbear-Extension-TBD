@@ -45,6 +45,6 @@ const menuRemove = {
 };
 
 OBR.onReady(() => {
-    OBR.contextMenu.create(menuAdd);
     OBR.contextMenu.create(menuRemove);
+    OBR.contextMenu.create(menuAdd);
 })
