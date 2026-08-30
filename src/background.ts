@@ -4,4 +4,6 @@ const message : string = "Hello World! V4";
 
 console.log(message);
 
-OBR.notification.show(message);
+OBR.onReady(() => {
+    OBR.notification.show(message);
+})
