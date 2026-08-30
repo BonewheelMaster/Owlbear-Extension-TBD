@@ -27,8 +27,7 @@ const menuAdd = {
             filter: { every: [{ key: "layer", value: "CHARACTER" },
                     { key: "roles", value: "GM" }
                     // Needed because the operator key throws a typeerror otherwise  VV
-                    ,
-                    { key: META + ".enabled", value: true, operator: "!=" }
+                    //                               , { key: META + ".enabled", value: true, operator: "!=" } as KeyFilter
                 ] }
         }],
     onClick: (addToken),
