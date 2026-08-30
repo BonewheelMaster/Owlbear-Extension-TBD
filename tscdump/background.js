@@ -40,6 +40,6 @@ const menuRemove = {
     onClick: (removeToken),
 };
 OBR.onReady(() => {
-    OBR.contextMenu.create(menuAdd);
     OBR.contextMenu.create(menuRemove);
+    OBR.contextMenu.create(menuAdd);
 });
