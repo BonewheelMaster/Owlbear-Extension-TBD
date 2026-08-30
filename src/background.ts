@@ -34,7 +34,7 @@ const menuAdd = {
 };
 
 const menuRemove = {
-    id: ID + "/menuAdd",
+    id: ID + "/menuRemove",
     icons: [{ icon: "https://bonewheelmaster.github.io/Owlbear-Extension-TBD/icon.png"
             , label: "Uninstill thought"
             , filter: { every: [ { key: "layer", value: "CHARACTER" }
