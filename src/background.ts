@@ -4,13 +4,12 @@ const message : string = "Hello World! V4";
 
 console.log(message);
 
-const menuItem : OBR.ContextMenuItem = {
+const menuItem = {
     id: "1337",
     icons: [{icon: "https://bonewheelmaster.github.io/Owlbear-Extension-TBD/icon.png", label: "Test"}],
     onClick: (() => {}),
 };
 
 OBR.onReady(() => {
-    OBR.notification.show(message);
-    OBR.create()
+    OBR.contextMenu.create(menuItem);
 })
