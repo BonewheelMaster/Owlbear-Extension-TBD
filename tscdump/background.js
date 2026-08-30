@@ -3,6 +3,7 @@ import OBR from "@owlbear-rodeo/sdk";
 // TODO change below to correct name
 const ID = "Owlbear-Extension-TBD/io.github.bonewheelmaster";
 const STATE_TAG = `${ID}/state`;
+const META = "metadata." + STATE_TAG;
 function addToken(context) {
     OBR.scene.items.updateItems(context.items, (items) => {
         for (let item of items) {
@@ -24,8 +25,10 @@ const menuAdd = {
     icons: [{ icon: "https://bonewheelmaster.github.io/Owlbear-Extension-TBD/popover.svg",
             label: "Instill thought",
             filter: { every: [{ key: "layer", value: "CHARACTER" },
-                    { key: "roles", value: "GM" },
-                    { key: "metadata", value: { STATE_TAG: {} } }
+                    { key: "roles", value: "GM" }
+                    // Needed because the operator key throws a typeerror otherwise  VV
+                    ,
+                    { key: META + ".enabled", value: true, operator: "!=" }
                 ] }
         }],
     onClick: (addToken),
@@ -36,7 +39,7 @@ const menuRemove = {
             label: "Uninstill thought",
             filter: { every: [{ key: "layer", value: "CHARACTER" },
                     { key: "roles", value: "GM" },
-                    { key: "metadata", value: { STATE_TAG: { "enabled": true } } }
+                    { key: META + ".enabled", value: true }
                 ] }
         }],
     onClick: (removeToken),

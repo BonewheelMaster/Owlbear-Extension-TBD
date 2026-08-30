@@ -1,9 +1,10 @@
 //import OBR from "@owlbear-rodeo/sdk";
-import OBR, { ContextMenuContext } from "@owlbear-rodeo/sdk";
+import OBR, { ContextMenuContext, KeyFilter } from "@owlbear-rodeo/sdk";
 
 // TODO change below to correct name
-const ID = "Owlbear-Extension-TBD/io.github.bonewheelmaster";
+const ID        = "Owlbear-Extension-TBD/io.github.bonewheelmaster";
 const STATE_TAG = `${ID}/state`
+const META      = "metadata." + STATE_TAG
 
 function addToken(context : ContextMenuContext) {
     OBR.scene.items.updateItems(context.items, (items) => {
@@ -28,7 +29,8 @@ const menuAdd = {
             , label: "Instill thought"
             , filter: { every: [ { key: "layer", value: "CHARACTER" }
                                , { key: "roles", value: "GM" }
-                               , { key: "metadata", value: { STATE_TAG: {} } }
+                               // Needed because the operator key throws a typeerror otherwise  VV
+                               , { key: META + ".enabled", value: true, operator: "!=" } as KeyFilter
                                ] }
            }],
     onClick: (addToken),
@@ -40,7 +42,7 @@ const menuRemove = {
             , label: "Uninstill thought"
             , filter: { every: [ { key: "layer", value: "CHARACTER" }
                                , { key: "roles", value: "GM" }
-                               , { key: "metadata", value: { STATE_TAG: { "enabled": true } } }
+                               , { key: META + ".enabled", value: true }
                                ] }
             }],
     onClick: (removeToken),
