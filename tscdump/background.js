@@ -5,6 +5,7 @@ const ID = "Owlbear-Extension-TBD/io.github.bonewheelmaster";
 const STATE_TAG = `${ID}/state`;
 const META = "metadata." + STATE_TAG;
 function addToken(context) {
+    console.log(context.items);
     var old_items = OBR.scene.items.getItems((item) => { return context.items.includes(item); });
     old_items.then((items) => {
         for (let item of items) {
