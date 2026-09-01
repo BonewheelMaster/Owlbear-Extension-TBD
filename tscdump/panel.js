@@ -13,8 +13,7 @@ const panel = (items) => {
         if (typeof (metadata) === "object"
             && metadata != null
             && "enabled" in metadata
-        //&& metadata.enabled == true
-        ) {
+            && metadata.enabled == true) {
             relevantItems.push({ name: item.name });
         }
     }
