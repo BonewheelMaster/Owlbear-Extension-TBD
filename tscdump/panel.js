@@ -29,4 +29,4 @@ const panel = (items) => {
         list.replaceChildren(...nodes);
     }
 };
-OBR.scene.items.onChange(panel);
+OBR.onReady(() => { OBR.scene.items.onChange(panel); });
