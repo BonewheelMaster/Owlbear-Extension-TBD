@@ -1,13 +1,10 @@
 import OBR, { Item } from "@owlbear-rodeo/sdk";
 
+const panelHTML = document.querySelector("#panel")
+if (panelHTML != null) { panelHTML.innerHTML = '<ul id="list"></ul>'; }
+
 const ID    = "Owlbear-Extension-TBD/io.github.bonewheelmaster";
 const STATE = `${ID}/state`
-
-document.documentElement.innerHTML = `
-    <div>
-        <ul id="list"></ul>
-    </div>
-`;
 
 const panel = (items : Item[]) => {
     const relevantItems = [];
