@@ -1,4 +1,5 @@
 import OBR from "@owlbear-rodeo/sdk";
+import * as state from "./state";
 // TODO change below to correct name
 const ID = "Owlbear-Extension-TBD/io.github.bonewheelmaster";
 const STATE = `${ID}/state`;
@@ -8,9 +9,7 @@ function itemInfo(context) {
 function addToken(context) {
     OBR.scene.items.updateItems(context.items, (items) => {
         for (let item of items) {
-            item.metadata[STATE] = {
-                "enabled": true,
-            };
+            item.metadata[STATE] = state.initMeleeAI;
         }
     });
 }
