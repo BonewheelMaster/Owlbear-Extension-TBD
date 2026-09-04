@@ -46,21 +46,23 @@ const panel = (items : (Item | Image)[]) => {
                 node.innerHTML = `
                     <p>${name}</p>
 
-                    <ol>
+                    <ul>
+                        <li>using: melee</li>
                         <li>speed: ${meta.speed}</li>
                         <li>target id: ${meta.target}</li>
-                    </ol>
+                    </ul>
                 `;
                 break;
             case state.RANGED: 
                 node.innerHTML = `
                     <p>${name}</p>
 
-                    <ol>
+                    <ul>
+                        <li>using: ranged</li>
                         <li>speed: ${meta.speed}</li>
                         <li>target id: ${meta.target}</li>
                         <li>range: ${meta.range}</li>
-                    </ol>
+                    </ul>
                 `;
                 break;
         }
