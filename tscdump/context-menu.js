@@ -23,7 +23,7 @@ function removeToken(context) {
 }
 const menuInfo = {
     id: ID + "/menuInfo",
-    icons: [{ icon: "https://bonewheelmaster.github.io/Owlbear-Extension-TBD/popover.svg",
+    icons: [{ icon: "https://bonewheelmaster.github.io/Owlbear-Extension-TBD/panel.svg",
             label: "Info -> Console",
             filter: { roles: ["GM"] } // Ditto above, and same below
         }],
@@ -31,7 +31,7 @@ const menuInfo = {
 };
 const menuAdd = {
     id: ID + "/menuAdd",
-    icons: [{ icon: "https://bonewheelmaster.github.io/Owlbear-Extension-TBD/popover.svg",
+    icons: [{ icon: "https://bonewheelmaster.github.io/Owlbear-Extension-TBD/panel.svg",
             label: "Instill thought",
             filter: { every: [{ key: "layer", value: "CHARACTER" }
                     // Needed because the operator key throws a typeerror otherwise  VV
@@ -44,7 +44,7 @@ const menuAdd = {
 };
 const menuRemove = {
     id: ID + "/menuRemove",
-    icons: [{ icon: "https://bonewheelmaster.github.io/Owlbear-Extension-TBD/icon.png",
+    icons: [{ icon: "https://bonewheelmaster.github.io/Owlbear-Extension-TBD/panel.svg",
             label: "Uninstill thought",
             filter: { every: [{ key: "layer", value: "CHARACTER" },
                     { key: ["metadata", STATE, "enabled"], value: true }
