@@ -1,4 +1,5 @@
 import OBR from "@owlbear-rodeo/sdk";
+import * as state from "./state";
 function getTextLabel(item) {
     if ("text" in item
         && typeof item.text == "object"
@@ -15,6 +16,7 @@ const panelHTML = document.querySelector("#panel");
 if (panelHTML != null) {
     panelHTML.innerHTML = '<ul id="list"></ul>';
 }
+// TODO change below to correct name
 const ID = "Owlbear-Extension-TBD/io.github.bonewheelmaster";
 const STATE = `${ID}/state`;
 const panel = (items) => {
@@ -32,11 +34,39 @@ const panel = (items) => {
     for (const item of relevantItems) {
         const node = document.createElement("li");
         const label = getTextLabel(item);
+        var name = "";
         if (label == "") {
-            node.innerHTML = `${item.name}`;
+            var name = `${item.name}`;
         }
         else {
-            node.innerHTML = `${label}`;
+            var name = `${label}`;
+        }
+        const meta = item.metadata[STATE];
+        if (!state.validMetadata(meta)) {
+            continue;
+        }
+        switch (meta.kind) {
+            case state.MELEE:
+                node.innerHTML = `
+                    <p>${name}</p>
+
+                    <ol>
+                        <li>speed: ${meta.speed}</li>
+                        <li>target id: ${meta.target}</li>
+                    </ol>
+                `;
+                break;
+            case state.RANGED:
+                node.innerHTML = `
+                    <p>${name}</p>
+
+                    <ol>
+                        <li>speed: ${meta.speed}</li>
+                        <li>target id: ${meta.target}</li>
+                        <li>range: ${meta.range}</li>
+                    </ol>
+                `;
+                break;
         }
         nodes.push(node);
     }

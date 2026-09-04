@@ -13,3 +13,31 @@ export const initRangedAI = {
     target: "",
     range: 60,
 };
+// Determine if the given object conforms to the NPCAI interface.
+export function validMetadata(meta) {
+    if (typeof meta == "object"
+        && "kind" in meta) {
+        switch (meta.kind) {
+            case MELEE:
+                return ("enabled" in meta
+                    && typeof meta.enabled == "boolean"
+                    && "speed" in meta
+                    && typeof meta.speed == "number"
+                    && "target" in meta
+                    && typeof meta.target == "string");
+            case RANGED:
+                return ("enabled" in meta
+                    && typeof meta.enabled == "boolean"
+                    && "speed" in meta
+                    && typeof meta.speed == "number"
+                    && "target" in meta
+                    && typeof meta.target == "string"
+                    && "range" in meta
+                    && typeof meta.range == "number");
+            default: return false;
+        }
+    }
+    else {
+        return false;
+    }
+}
