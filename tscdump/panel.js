@@ -1,4 +1,16 @@
 import OBR from "@owlbear-rodeo/sdk";
+function getTextLabel(item) {
+    if ("text" in item
+        && typeof item.text == "object"
+        && item.text != null
+        && "plainText" in item.text
+        && typeof item.text.plainText == "string") {
+        return item.text.plainText;
+    }
+    else {
+        return "";
+    }
+}
 const panelHTML = document.querySelector("#panel");
 if (panelHTML != null) {
     panelHTML.innerHTML = '<ul id="list"></ul>';
@@ -13,13 +25,19 @@ const panel = (items) => {
             && metadata != null
             && "enabled" in metadata
             && metadata.enabled == true) {
-            relevantItems.push({ name: item.name });
+            relevantItems.push(item);
         }
     }
     const nodes = [];
     for (const item of relevantItems) {
         const node = document.createElement("li");
-        node.innerHTML = `${item.name}`;
+        const label = getTextLabel(item);
+        if (label == "") {
+            node.innerHTML = `${item.name}`;
+        }
+        else {
+            node.innerHTML = `${label}`;
+        }
         nodes.push(node);
     }
     const list = document.querySelector("#list");
