@@ -32,12 +32,11 @@ const menuAdd = {
     id: ID + "/menuAdd",
     icons: [{ icon: "https://bonewheelmaster.github.io/Owlbear-Extension-TBD/panel.svg",
             label: "Instill thought",
-            filter: { every: [{ key: "layer", value: "CHARACTER" }
-                    // Needed because the operator key throws a typeerror otherwise  VV
-                    ,
-                    { key: ["metadata", STATE], value: {}, operator: "!=" }
+            filter: { every: [{ key: "layer", value: "CHARACTER" },
+                    { key: ["metadata", STATE], value: {} }
                 ],
-                roles: ["GM"] } // Ditto above, and same below
+                roles: ["GM"]
+            } // Ditto above, and same below
         }],
     onClick: (addToken),
 };
@@ -45,11 +44,12 @@ const menuRemove = {
     id: ID + "/menuRemove",
     icons: [{ icon: "https://bonewheelmaster.github.io/Owlbear-Extension-TBD/panel.svg",
             label: "Uninstill thought",
-            filter: { every: [{ key: "layer", value: "CHARACTER" },
-                    { key: ["metadata", STATE], value: {} }
+            filter: { every: [{ key: "layer", value: "CHARACTER" }
+                    // Needed because the operator key throws a typeerror otherwise  VV
+                    ,
+                    { key: ["metadata", STATE], value: {}, operator: "!=" }
                 ],
-                roles: ["GM"]
-            }
+                roles: ["GM"] }
         }],
     onClick: (removeToken),
 };
