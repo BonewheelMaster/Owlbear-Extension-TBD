@@ -42,7 +42,7 @@ const menuAdd = {
             , label: "Instill thought"
             , filter: { every: [ { key: "layer", value: "CHARACTER" }
                                // Needed because the operator key throws a typeerror otherwise  VV
-                               , { key: ["metadata", STATE, "enabled"], value: true, operator: "!=" } as KeyFilter
+                               , { key: ["metadata", STATE], value: {}, operator: "!=" } as KeyFilter
                                ]
                       , roles: ["GM"]
                       } as ContextMenuIconFilter // Ditto above, and same below
@@ -55,7 +55,7 @@ const menuRemove = {
     icons: [{ icon: "https://bonewheelmaster.github.io/Owlbear-Extension-TBD/panel.svg"
             , label: "Uninstill thought"
             , filter: { every: [ { key: "layer", value: "CHARACTER" }
-                               , { key: ["metadata", STATE, "enabled"], value: true }
+                               , { key: ["metadata", STATE], value: {} }
                                ]
                       , roles: ["GM"]
                       } as ContextMenuIconFilter
