@@ -1,5 +1,6 @@
 import OBR from "@owlbear-rodeo/sdk";
 import * as state from "./state";
+import * as util from "./util";
 function getTextLabel(item) {
     if ("text" in item
         && typeof item.text == "object"
@@ -25,28 +26,13 @@ const panelHTML = document.querySelector("#panel");
 if (panelHTML != null) {
     panelHTML.innerHTML = '<ul id="list"></ul>';
 }
-// TODO change below to correct name
-const ID = "Owlbear-Extension-TBD/io.github.bonewheelmaster";
-const STATE = `${ID}/state`;
-const panel = (items) => {
-    const relevantItems = [];
-    for (const item of items) {
-        const metadata = item.metadata[STATE];
-        if (typeof (metadata) === "object"
-            && metadata != null
-            && "enabled" in metadata
-            && metadata.enabled == true) {
-            relevantItems.push(item);
-        }
-    }
+const panel = async (items) => {
+    const npcs = await util.allNPCs();
     const nodes = [];
-    for (const item of relevantItems) {
+    for (const npc of npcs) {
         const node = document.createElement("li");
-        const name = getName(item);
-        const meta = item.metadata[STATE];
-        if (!state.validMetadata(meta)) {
-            continue;
-        }
+        const name = getName(npc);
+        const meta = npc.meta;
         switch (meta.kind) {
             case state.MELEE:
                 node.innerHTML = `

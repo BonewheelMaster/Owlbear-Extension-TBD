@@ -1,5 +1,9 @@
+import OBR, { Item } from "@owlbear-rodeo/sdk";
+
 export const MELEE  = "MELEE";
 export const RANGED = "RANGED";
+
+export type NPC = Item & { meta: NPCAI }
 
 export type NPCAI = MeleeAI | RangedAI;
 
