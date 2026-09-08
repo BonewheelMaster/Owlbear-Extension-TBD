@@ -1,12 +1,11 @@
-import OBR from "@owlbear-rodeo/sdk";
+import OBR, { Item } from "@owlbear-rodeo/sdk";
 
 import * as state from "./state";
 
 export const ID    = "Owlbear-Extension-TBD/io.github.bonewheelmaster";
 export const STATE = `${ID}/state`
 
-export async function allNPCs() : Promise<state.NPC[]> {
-    const items = await OBR.scene.items.getItems()
+export function filterNPCs(items: Item[]) : state.NPC[] {
     var npcs = [];
 
     for (const item of items) {

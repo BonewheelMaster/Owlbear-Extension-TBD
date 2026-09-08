@@ -22,8 +22,8 @@ function getName(item : Item) {
 const panelHTML = document.querySelector("#panel")
 if (panelHTML != null) { panelHTML.innerHTML = '<ul id="list"></ul>'; }
 
-const panel = async (items : Item[]) => {
-    const npcs = await util.allNPCs();
+const panel = (items : Item[]) => {
+    const npcs = util.filterNPCs(items);
 
     const nodes = [];
     for (const npc of npcs) {

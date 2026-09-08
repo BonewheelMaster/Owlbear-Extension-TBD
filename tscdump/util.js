@@ -1,9 +1,7 @@
-import OBR from "@owlbear-rodeo/sdk";
 import * as state from "./state";
 export const ID = "Owlbear-Extension-TBD/io.github.bonewheelmaster";
 export const STATE = `${ID}/state`;
-export async function allNPCs() {
-    const items = await OBR.scene.items.getItems();
+export function filterNPCs(items) {
     var npcs = [];
     for (const item of items) {
         if (!state.validMetadata(item.metadata[STATE])) {

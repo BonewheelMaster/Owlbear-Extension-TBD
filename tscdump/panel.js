@@ -26,8 +26,8 @@ const panelHTML = document.querySelector("#panel");
 if (panelHTML != null) {
     panelHTML.innerHTML = '<ul id="list"></ul>';
 }
-const panel = async (items) => {
-    const npcs = await util.allNPCs();
+const panel = (items) => {
+    const npcs = util.filterNPCs(items);
     const nodes = [];
     for (const npc of npcs) {
         const node = document.createElement("li");
