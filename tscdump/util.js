@@ -11,3 +11,12 @@ export function filterNPCs(items) {
     }
     return npcs;
 }
+export function getTarget(items, targetId) {
+    const targets = items.filter((item) => item.id == targetId);
+    if (targets.length == 1) {
+        return targets[0];
+    }
+    else {
+        return null;
+    }
+}

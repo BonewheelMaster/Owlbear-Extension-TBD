@@ -29,8 +29,11 @@ const panel = (items : Item[]) => {
     for (const npc of npcs) {
         const node = document.createElement("li");
 
-        const name = getName(npc);
-        const meta = npc.meta;
+        const name      = getName(npc);
+        const meta      = npc.meta;
+
+        const target    = util.getTarget(items, meta.target);
+        const targetStr = target != null ? `Target: ${target.name}` : "No target";
 
         switch (meta.kind) {
             case state.MELEE:
@@ -40,7 +43,7 @@ const panel = (items : Item[]) => {
                     <ul>
                         <li>using: melee</li>
                         <li>speed: ${meta.speed}</li>
-                        <li>target id: ${meta.target}</li>
+                        <li>${targetStr}</li>
                     </ul>
                 `;
                 break;
@@ -51,7 +54,7 @@ const panel = (items : Item[]) => {
                     <ul>
                         <li>using: ranged</li>
                         <li>speed: ${meta.speed}</li>
-                        <li>target id: ${meta.target}</li>
+                        <li>${targetStr}</li>
                         <li>range: ${meta.range}</li>
                     </ul>
                 `;
