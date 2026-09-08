@@ -1,5 +1,3 @@
-import OBR from "@owlbear-rodeo/sdk";
-
 export const MELEE  = "MELEE";
 export const RANGED = "RANGED";
 

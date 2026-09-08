@@ -2,7 +2,6 @@ import OBR, { Item, Image } from "@owlbear-rodeo/sdk";
 
 import * as state from "./state";
 
-
 function getTextLabel(item : Item) {
     if ( "text" in item 
          && typeof item.text == "object"
@@ -41,9 +40,9 @@ const panel = (items : (Item | Image)[]) => {
         const node = document.createElement("li");
 
         const name = getName(item);
-        const meta = item.metadata[STATE]
-
+        const meta = item.metadata[STATE];
         if (!state.validMetadata(meta)) { continue; }
+
         switch (meta.kind) {
             case state.MELEE: 
                 node.innerHTML = `
