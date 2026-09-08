@@ -13,6 +13,12 @@ function getTextLabel(item : Item) {
     else { return ""; }
 }
 
+function getName(item : Item) {
+    const label = getTextLabel(item);
+    if (label == "") { return `${item.name}`; }
+    else             { return `${label}`; }
+}
+
 const panelHTML = document.querySelector("#panel")
 if (panelHTML != null) { panelHTML.innerHTML = '<ul id="list"></ul>'; }
 
@@ -34,12 +40,9 @@ const panel = (items : (Item | Image)[]) => {
     for (const item of relevantItems) {
         const node = document.createElement("li");
 
-        const label = getTextLabel(item);
-        var name = "";
-        if (label == "") { var name = `${item.name}`; }
-        else             { var name = `${label}`; }
-
+        const name = getName(item);
         const meta = item.metadata[STATE]
+
         if (!state.validMetadata(meta)) { continue; }
         switch (meta.kind) {
             case state.MELEE: 
