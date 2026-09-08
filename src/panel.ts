@@ -3,22 +3,6 @@ import OBR, { Item, Image } from "@owlbear-rodeo/sdk";
 import * as state from "./state";
 import * as util from "./util";
 
-function getTextLabel(item : Item) {
-    if ( "text" in item
-         && typeof item.text == "object"
-         && item.text != null
-         && "plainText" in item.text
-         && typeof item.text.plainText == "string"
-       ) { return item.text.plainText; }
-    else { return ""; }
-}
-
-function getName(item : Item) {
-    const label = getTextLabel(item);
-    if (label == "") { return `${item.name}`; }
-    else             { return `${label}`; }
-}
-
 const panelHTML = document.querySelector("#panel")
 if (panelHTML != null) { panelHTML.innerHTML = '<ul id="list"></ul>'; }
 
@@ -29,11 +13,11 @@ const panel = (items : Item[]) => {
     for (const npc of npcs) {
         const node = document.createElement("li");
 
-        const name      = getName(npc);
+        const name      = util.getName(npc);
         const meta      = npc.meta;
 
         const target    = util.getTarget(items, meta.target);
-        const targetStr = target != null ? `Target: ${target.name}` : "No target";
+        const targetStr = target != null ? `Target: ${util.getName(target)}` : "No target";
 
         switch (meta.kind) {
             case state.MELEE:

@@ -20,3 +20,24 @@ export function getTarget(items, targetId) {
         return null;
     }
 }
+export function getTextLabel(item) {
+    if ("text" in item
+        && typeof item.text == "object"
+        && item.text != null
+        && "plainText" in item.text
+        && typeof item.text.plainText == "string") {
+        return item.text.plainText;
+    }
+    else {
+        return "";
+    }
+}
+export function getName(item) {
+    const label = getTextLabel(item);
+    if (label == "") {
+        return `${item.name}`;
+    }
+    else {
+        return `${label}`;
+    }
+}
