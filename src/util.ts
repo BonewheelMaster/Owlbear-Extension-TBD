@@ -6,7 +6,7 @@ export const ID    = "Owlbear-Extension-TBD/io.github.bonewheelmaster";
 export const STATE = `${ID}/state`
 
 export function filterNPCs(items: Item[]) : state.NPC[] {
-    var npcs = [];
+    const npcs = [];
 
     for (const item of items) {
         if (! state.validMetadata(item.metadata[STATE])) { continue; }
