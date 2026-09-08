@@ -4,7 +4,7 @@ export const initMeleeAI = {
     kind: MELEE,
     enabled: true,
     speed: 30,
-    target: "",
+    target: "7c7c63a9-4a09-4632-9d8d-00bffd2ee66f", // TODO Tmp
 };
 export const initRangedAI = {
     kind: RANGED,
