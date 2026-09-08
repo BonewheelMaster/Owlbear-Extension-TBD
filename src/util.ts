@@ -10,8 +10,8 @@ export async function allNPCs() : Promise<state.NPC[]> {
     var npcs = [];
 
     for (const item of items) {
-        if (! state.validMetadata(item.metadata)) { continue; }
-        npcs.push({ ...item, meta: item.metadata });
+        if (! state.validMetadata(item.metadata[STATE])) { continue; }
+        npcs.push({ ...item, meta: item.metadata[STATE] });
     }
     return npcs;
 }

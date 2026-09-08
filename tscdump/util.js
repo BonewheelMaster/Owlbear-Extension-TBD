@@ -6,10 +6,10 @@ export async function allNPCs() {
     const items = await OBR.scene.items.getItems();
     var npcs = [];
     for (const item of items) {
-        if (!state.validMetadata(item.metadata)) {
+        if (!state.validMetadata(item.metadata[STATE])) {
             continue;
         }
-        npcs.push({ ...item, meta: item.metadata });
+        npcs.push({ ...item, meta: item.metadata[STATE] });
     }
     return npcs;
 }
