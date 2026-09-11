@@ -13,14 +13,21 @@ export async function moveAll() {
         //let expendedMovement = 0;
         //while (expendedMovement < npc.meta.speed) {
         //}
-        newPositions[npc.id].x += dpi;
+        const target = util.getTarget(items, npc.meta.target);
+        if (target === null) {
+            continue;
+        }
+        const angle = Math.atan2(npc.position.y - target.position.y, npc.position.x - target.position.x);
+        newPositions[npc.id].x += dpi * Math.cos(angle);
+        newPositions[npc.id].y += dpi * Math.sin(angle);
     }
     OBR.scene.items.updateItems(npcs, (nn) => {
         for (let npc of nn) {
             const target = util.getTarget(items, npc.meta.target);
-            if (target !== null) {
-                npc.position = newPositions[npc.id];
+            if (target === null) {
+                continue;
             }
+            npc.position = newPositions[npc.id];
         }
     });
 }

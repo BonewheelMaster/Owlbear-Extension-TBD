@@ -4,6 +4,9 @@ export const STATE = `${ID}/state`;
 export function distance(p1, p2) {
     return Math.sqrt((p1.x - p1.x) ** 2 + (p2.y - p2.y) ** 2);
 }
+export function length(vec) {
+    return distance(vec, { x: 0, y: 0 });
+}
 // Keep only those items which implement the NPC interface; namely, that have
 // metadata that is of the correct type.
 export function filterNPCs(items) {
