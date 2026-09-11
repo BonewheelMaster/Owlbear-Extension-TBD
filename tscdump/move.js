@@ -3,6 +3,7 @@ import * as util from "./util";
 export async function moveAll() {
     const items = await OBR.scene.items.getItems();
     const npcs = util.filterNPCs(items);
+    // TODO handle other grid types, namely hexes
     const dpi = await OBR.scene.grid.getDpi();
     let newPositions = {};
     for (let npc of npcs) { // This is done outside of the following because it is async.
@@ -10,7 +11,7 @@ export async function moveAll() {
         //let expendedMovement = 0;
         //while (expendedMovement < npc.meta.speed) {
         //}
-        newPositions[npc.id].y += dpi;
+        newPositions[npc.id].x += dpi;
     }
     OBR.scene.items.updateItems(npcs, (nn) => {
         for (let npc of nn) {
