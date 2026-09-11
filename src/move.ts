@@ -19,7 +19,7 @@ export async function moveAll() {
         if (target === null) { continue; }
 
         // FIXME: if speed is not a multiple of 5 this will move more than allowed.
-        let expendedMovement = 0;
+        let expendedMovement = 25;
         while (expendedMovement < npc.meta.speed) {
             const action = await meleeBasicMove(newPositions[npc.id], target.position);
             if (action.gridType == "Square" && action.movement == "Stand") { break; } // TODO other grids
@@ -86,14 +86,14 @@ function angleToAction(angle : number, gridType : "Square") : Action { // TODO o
 
     let result = "";
     switch (y) {
-        case 1 : result += "N"; break;
-        case 0 :                break;
+        case  1: result += "N"; break;
+        case  0:                break;
         case -1: result += "S"; break;
     }
     switch (x) {
         case -1: result += "W"; break;
-        case 0 :                break;
-        case 1 : result += "E"; break;
+        case  0:                break;
+        case  1: result += "E"; break;
     }
     if (result == "") { return { gridType : gridType, movement : "Stand" }; }
     return { gridType : gridType, movement : result } as Action;
