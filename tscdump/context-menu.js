@@ -44,7 +44,7 @@ const menuHardcodeId = {
             label: "Hardcode target ID",
             filter: { roles: ["GM"] }
         }],
-    onClick: (itemInfo),
+    onClick: (hardcodeId),
 };
 const menuAdd = {
     id: ID + "/menuAdd",

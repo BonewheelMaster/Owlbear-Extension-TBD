@@ -53,7 +53,7 @@ const menuHardcodeId = {
             , label: "Hardcode target ID"
             , filter: { roles: ["GM"] } as ContextMenuIconFilter
            }],
-    onClick: (itemInfo),
+    onClick: (hardcodeId),
 };
 
 const menuAdd = {
