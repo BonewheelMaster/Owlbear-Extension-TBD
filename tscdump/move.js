@@ -85,7 +85,7 @@ function move(speed, pos, action) {
 function angleToAction(angle, gridType) {
     const x = Math.round(Math.cos(angle));
     const y = -Math.round(Math.sin(angle));
-    let result = "N";
+    let result = "";
     switch (y) {
         case 1:
             result += "N";
