@@ -8,20 +8,20 @@ export async function moveAll() {
     // TODO handle collision
     const dpi = await OBR.scene.grid.getDpi();
     let newPositions = {};
-    for (let npc of npcs) { // This is done outside of the following because it is async.
+    for (let npc of npcs) { // This is done outside of the updateItems because it is async.
         newPositions[npc.id] = await OBR.scene.grid.snapPosition(npc.position, 1, false, true);
         const target = util.getTarget(items, npc.meta.target);
         if (target === null) {
             continue;
         }
-        const targetPos = await OBR.scene.grid.snapPosition(target.position, 1, false, true);
         // FIXME: if speed is not a multiple of 5 this will move more than allowed.
         let expendedMovement = 0;
-        while (expendedMovement < npc.meta.speed
-            && util.distance(newPositions[npc.id], targetPos) >= 2 * dpi) { // TODO same as below
-            const angle = Math.atan2(newPositions[npc.id].y - targetPos.y, newPositions[npc.id].x - targetPos.x);
-            newPositions[npc.id].x -= util.round(dpi * Math.cos(angle), dpi);
-            newPositions[npc.id].y -= util.round(dpi * Math.sin(angle), dpi);
+        while (expendedMovement < npc.meta.speed) {
+            const action = await meleeBasicMove(newPositions[npc.id], target.position);
+            if (action.gridType == "Square" && action.movement == "Stand") {
+                break;
+            } // TODO other grids
+            newPositions[npc.id] = move(dpi, newPositions[npc.id], action);
             expendedMovement += 5; // TODO hardcoded value for grid scale
         }
     }
@@ -34,4 +34,78 @@ export async function moveAll() {
             npc.position = newPositions[npc.id];
         }
     });
+}
+// Beeline strategy, TODO with left turns when running into something.
+async function meleeBasicMove(pos, targetPos) {
+    // TODO gridtype always square
+    const tpos = await OBR.scene.grid.snapPosition(targetPos, 1, false, true);
+    const dpi = await OBR.scene.grid.getDpi();
+    if (util.distance(pos, tpos) < 2 * dpi) {
+        return { gridType: "Square", movement: "Stand" };
+    }
+    // TODO handle other grid types, namely hexes
+    // TODO handle collision
+    const angle = Math.atan2(pos.y - tpos.y, pos.x - tpos.x);
+    return angleToAction(angle, "Square");
+}
+// TODO handle collision
+function move(speed, pos, action) {
+    let newPos = pos;
+    switch (action.gridType) {
+        case "Square": switch (action.movement) {
+            case "Stand": break;
+            case "N":
+                newPos = { ...pos, y: pos.y -= speed };
+                break;
+            case "NW":
+                newPos = { ...pos, y: pos.y -= speed, x: pos.x -= speed };
+                break;
+            case "W":
+                newPos = { ...pos, x: pos.x -= speed };
+                break;
+            case "SW":
+                newPos = { ...pos, y: pos.y += speed, x: pos.x -= speed };
+                break;
+            case "S":
+                newPos = { ...pos, y: pos.y += speed };
+                break;
+            case "SE":
+                newPos = { ...pos, y: pos.y += speed, x: pos.x += speed };
+                break;
+            case "E":
+                newPos = { ...pos, x: pos.x += speed };
+                break;
+            case "NE":
+                newPos = { ...pos, y: pos.y -= speed, x: pos.x += speed };
+                break;
+        }
+    }
+    return newPos;
+}
+function angleToAction(angle, gridType) {
+    const x = Math.round(Math.cos(angle));
+    const y = Math.round(Math.sin(angle));
+    let result = "";
+    switch (y) {
+        case -1:
+            result += "S";
+            break;
+        case 0: break;
+        case 1:
+            result += "N";
+            break;
+    }
+    switch (x) {
+        case -1:
+            result += "W";
+            break;
+        case 0: break;
+        case 1:
+            result += "E";
+            break;
+    }
+    if (result == "") {
+        return { gridType: gridType, movement: "Stand" };
+    }
+    return { gridType: gridType, movement: result };
 }
