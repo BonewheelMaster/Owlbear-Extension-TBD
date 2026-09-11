@@ -84,17 +84,17 @@ function angleToAction(angle : number, gridType : "Square") : Action { // TODO o
     const x = Math.round(Math.cos(angle));
     const y = Math.round(Math.sin(angle));
 
-    let result = "";
-    switch (y) {
-        case  1: result += "N"; break;
-        case  0:                break;
-        case -1: result += "S"; break;
-    }
-    switch (x) {
-        case -1: result += "W"; break;
-        case  0:                break;
-        case  1: result += "E"; break;
-    }
+    let result = "N";
+    //switch (y) {
+    //    case  1: result += "N"; break;
+    //    case  0:                break;
+    //    case -1: result += "S"; break;
+    //}
+    //switch (x) {
+    //    case -1: result += "W"; break;
+    //    case  0:                break;
+    //    case  1: result += "E"; break;
+    //}
     if (result == "") { return { gridType : gridType, movement : "Stand" }; }
     return { gridType : gridType, movement : result } as Action;
 }
