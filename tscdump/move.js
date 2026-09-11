@@ -45,7 +45,7 @@ async function meleeBasicMove(pos, targetPos) {
     }
     // TODO handle other grid types, namely hexes
     // TODO handle collision
-    const angle = Math.atan2(pos.y - tpos.y, pos.x - tpos.x);
+    const angle = Math.atan2(tpos.y - pos.y, tpos.x - pos.x);
     return angleToAction(angle, "Square");
 }
 // TODO handle collision
