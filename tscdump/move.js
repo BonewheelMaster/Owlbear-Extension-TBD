@@ -9,13 +9,10 @@ export async function moveAll() {
     }
     OBR.scene.items.updateItems(npcs, (nn) => {
         for (let npc of nn) {
-            //        const pos1 = npc.position;
-            //        const target = util.getTarget(items, npc.meta.target);
-            //        if (target !== null) { 
-            //            const dist = await OBR.scene.grid.getDistance(pos1, target.position)
-            //            console.log(`${util.getName(npc)}: ${dist}`);
-            //        }
-            npc.position = newPositions[npc.id];
+            const target = util.getTarget(items, npc.meta.target);
+            if (target !== null) {
+                npc.position = newPositions[npc.id];
+            }
         }
     });
 }
