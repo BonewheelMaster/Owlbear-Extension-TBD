@@ -15,7 +15,7 @@ export async function moveAll() {
             continue;
         }
         // FIXME: if speed is not a multiple of 5 this will move more than allowed.
-        let expendedMovement = 25;
+        let expendedMovement = 0;
         while (expendedMovement < npc.meta.speed) {
             const action = await meleeBasicMove(newPositions[npc.id], target.position);
             if (action.gridType == "Square" && action.movement == "Stand") {
