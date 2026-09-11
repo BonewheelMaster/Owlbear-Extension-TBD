@@ -7,12 +7,6 @@ function testFunc() {
     console.log("button");
 }
 
-const buttonHTML = document.querySelector("#button")
-if (buttonHTML != null) { buttonHTML.innerHTML = '<button onclick="testFunc()">move all</button>'; }
-
-const panelHTML = document.querySelector("#panel")
-if (panelHTML != null) { panelHTML.innerHTML = '<ul id="list"></ul>'; }
-
 const panel = (items : Item[]) => {
     const npcs = util.filterNPCs(items);
 
@@ -20,8 +14,8 @@ const panel = (items : Item[]) => {
     for (const npc of npcs) {
         const node = document.createElement("li");
 
-        const name      = util.getName(npc);
-        const meta      = npc.meta;
+        const name = util.getName(npc);
+        const meta = npc.meta;
 
         const target    = util.getTarget(items, meta.target);
         const targetStr = target != null ? `Target: ${util.getName(target)}` : "No target";
@@ -57,4 +51,11 @@ const panel = (items : Item[]) => {
     const list = document.querySelector("#list");
     if (list != null) { list.replaceChildren(...nodes); }
 };
+
+const buttonHTML = document.querySelector("#button")
+if (buttonHTML != null) { buttonHTML.addEventListener("click", testFunc); }
+
+const panelHTML = document.querySelector("#panel")
+if (panelHTML != null) { panelHTML.innerHTML = '<ul id="list"></ul>'; }
+
 OBR.onReady(() => { OBR.scene.items.onChange(panel); });

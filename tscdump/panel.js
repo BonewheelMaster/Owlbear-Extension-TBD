@@ -4,14 +4,6 @@ import * as util from "./util";
 function testFunc() {
     console.log("button");
 }
-const buttonHTML = document.querySelector("#button");
-if (buttonHTML != null) {
-    buttonHTML.innerHTML = '<button onclick="testFunc()">move all</button>';
-}
-const panelHTML = document.querySelector("#panel");
-if (panelHTML != null) {
-    panelHTML.innerHTML = '<ul id="list"></ul>';
-}
 const panel = (items) => {
     const npcs = util.filterNPCs(items);
     const nodes = [];
@@ -53,4 +45,12 @@ const panel = (items) => {
         list.replaceChildren(...nodes);
     }
 };
+const buttonHTML = document.querySelector("#button");
+if (buttonHTML != null) {
+    buttonHTML.addEventListener("click", testFunc);
+}
+const panelHTML = document.querySelector("#panel");
+if (panelHTML != null) {
+    panelHTML.innerHTML = '<ul id="list"></ul>';
+}
 OBR.onReady(() => { OBR.scene.items.onChange(panel); });
