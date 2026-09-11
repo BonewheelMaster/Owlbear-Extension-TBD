@@ -10,7 +10,8 @@ export async function moveAll() {
         const pos1 = npc.position;
         const target = util.getTarget(items, npc.meta.target);
         if (target !== null) { 
-            console.log(`${util.getName(npc)}: ${OBR.scene.grid.getDistance(pos1, target.position)}`);
+            const dist = await OBR.scene.grid.getDistance(pos1, target.position)
+            console.log(`${util.getName(npc)}: ${dist}`);
         }
     }
 }
