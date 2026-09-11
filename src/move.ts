@@ -20,7 +20,7 @@ export async function moveAll() {
         // FIXME: if speed is not a multiple of 5 this will move more than allowed.
         let expendedMovement = 0;
         while (expendedMovement < npc.meta.speed 
-            && util.distance(newPositions[npc.id], target.position) > 5*dpi) { // TODO same as below
+            && util.distance(newPositions[npc.id], target.position) > dpi) { // TODO same as below
             const angle = Math.atan2( newPositions[npc.id].y - target.position.y
                                     , newPositions[npc.id].x - target.position.x);
             newPositions[npc.id].x -= util.round(dpi * Math.cos(angle), dpi);
