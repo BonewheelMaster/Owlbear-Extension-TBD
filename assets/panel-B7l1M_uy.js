@@ -1,4 +1,4 @@
-import{a as e,i as t,n,r,s as i,t as a}from"./util-DSV7c2X_.js";async function o(){let e=await i.scene.items.getItems(),t=a(e);i.scene.items.updateItems(t,e=>{for(let t of e)i.scene.grid.snapPosition(t.position,1,!1,!0).then(e=>{t.position=e})})}var s=i=>{let o=a(i),s=[];for(let a of o){let o=document.createElement(`li`),c=n(a),l=a.meta,u=r(i,l.target),d=u==null?`No target`:`Target: ${n(u)}`;switch(l.kind){case t:o.innerHTML=`
+import{a as e,i as t,n,r,s as i,t as a}from"./util-DSV7c2X_.js";async function o(){let e=await i.scene.items.getItems(),t=a(e),n={};for(let e of t)n[e.id]=await i.scene.grid.snapPosition(e.position,1,!1,!0);i.scene.items.updateItems(t,e=>{for(let t of e)t.position=n[t.id]})}var s=i=>{let o=a(i),s=[];for(let a of o){let o=document.createElement(`li`),c=n(a),l=a.meta,u=r(i,l.target),d=u==null?`No target`:`Target: ${n(u)}`;switch(l.kind){case t:o.innerHTML=`
                     <p>${c}</p>
 
                     <ul>
