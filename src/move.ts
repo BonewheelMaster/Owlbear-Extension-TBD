@@ -6,5 +6,11 @@ import * as util from "./util";
 export async function moveAll() {
     const items = await OBR.scene.items.getItems();
     const npcs = util.filterNPCs(items);
-    console.log(npcs);
+    for (let npc of npcs) {
+        const pos1 = npc.position;
+        const target = util.getTarget(npcs, npc.meta.target);
+        if (target !== null) { 
+            console.log(`${util.getName(npc)}: ${OBR.scene.grid.getDistance(pos1, target.position)}`);
+        }
+    }
 }
