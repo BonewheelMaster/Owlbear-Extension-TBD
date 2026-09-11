@@ -1,10 +1,19 @@
 import OBR from "@owlbear-rodeo/sdk";
 import * as state from "./state";
+import * as util from "./util";
 // TODO change below to correct name
 const ID = "Owlbear-Extension-TBD/io.github.bonewheelmaster";
 const STATE = `${ID}/state`;
 function itemInfo(context) {
     console.log(context.items);
+}
+function hardcodeId(context) {
+    OBR.scene.items.updateItems(context.items, (items) => {
+        const npcs = util.filterNPCs(items);
+        for (let npc of npcs) {
+            npc.meta.target = "7c7c63a9-4a09-4632-9d8d-00bffd2ee66f";
+        }
+    });
 }
 function addToken(context) {
     OBR.scene.items.updateItems(context.items, (items) => {
@@ -24,7 +33,16 @@ const menuInfo = {
     id: ID + "/menuInfo",
     icons: [{ icon: "https://bonewheelmaster.github.io/Owlbear-Extension-TBD/panel.svg",
             label: "Info -> Console",
-            filter: { roles: ["GM"] } // Ditto above, and same below
+            filter: { roles: ["GM"] }
+        }],
+    onClick: (itemInfo),
+};
+// Requires that the token is already initialized.
+const menuHardcodeId = {
+    id: ID + "/hardcodeId",
+    icons: [{ icon: "https://bonewheelmaster.github.io/Owlbear-Extension-TBD/panel.svg",
+            label: "Hardcode target ID",
+            filter: { roles: ["GM"] }
         }],
     onClick: (itemInfo),
 };
@@ -32,12 +50,10 @@ const menuAdd = {
     id: ID + "/menuAdd",
     icons: [{ icon: "https://bonewheelmaster.github.io/Owlbear-Extension-TBD/panel.svg",
             label: "Instill thought",
-            filter: { every: [{ key: "layer", value: "CHARACTER" }
-                    // Needed because the operator key throws a typeerror otherwise  VV
-                    ,
+            filter: { every: [{ key: "layer", value: "CHARACTER" },
                     { key: ["metadata", STATE, "enabled"], value: true, operator: "!=" }
                 ],
-                roles: ["GM"] } // Ditto above, and same below
+                roles: ["GM"] }
         }],
     onClick: (addToken),
 };
@@ -57,4 +73,5 @@ export function main() {
     OBR.contextMenu.create(menuInfo);
     OBR.contextMenu.create(menuAdd);
     OBR.contextMenu.create(menuRemove);
+    OBR.contextMenu.create(menuHardcodeId);
 }
