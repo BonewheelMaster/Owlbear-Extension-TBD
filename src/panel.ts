@@ -2,10 +2,7 @@ import OBR, { Item, Image } from "@owlbear-rodeo/sdk";
 
 import * as state from "./state";
 import * as util from "./util";
-
-function testFunc() {
-    console.log("button");
-}
+import * as move from "./move";
 
 const panel = (items : Item[]) => {
     const npcs = util.filterNPCs(items);
@@ -53,7 +50,7 @@ const panel = (items : Item[]) => {
 };
 
 const buttonHTML = document.querySelector("#button")
-if (buttonHTML != null) { buttonHTML.addEventListener("click", testFunc); }
+if (buttonHTML != null) { buttonHTML.addEventListener("click", move.moveAll); }
 
 const panelHTML = document.querySelector("#panel")
 if (panelHTML != null) { panelHTML.innerHTML = '<ul id="list"></ul>'; }

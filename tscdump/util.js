@@ -1,6 +1,8 @@
 import * as state from "./state";
 export const ID = "Owlbear-Extension-TBD/io.github.bonewheelmaster";
 export const STATE = `${ID}/state`;
+// Keep only those items which implement the NPC interface; namely, that have
+// metadata that is of the correct type.
 export function filterNPCs(items) {
     const npcs = [];
     for (const item of items) {
@@ -11,6 +13,7 @@ export function filterNPCs(items) {
     }
     return npcs;
 }
+// Given all items and a target id, return the item that id corresponds to.
 export function getTarget(items, targetId) {
     const targets = items.filter((item) => item.id == targetId);
     if (targets.length == 1) {
@@ -20,6 +23,7 @@ export function getTarget(items, targetId) {
         return null;
     }
 }
+// Get the text label from an item. If the item has none, return "".
 export function getTextLabel(item) {
     if ("text" in item
         && typeof item.text == "object"
@@ -32,6 +36,7 @@ export function getTextLabel(item) {
         return "";
     }
 }
+// Get the name of an item, which is its text label if it has one.
 export function getName(item) {
     const label = getTextLabel(item);
     if (label == "") {

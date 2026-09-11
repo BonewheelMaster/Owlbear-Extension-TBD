@@ -1,9 +1,7 @@
 import OBR from "@owlbear-rodeo/sdk";
 import * as state from "./state";
 import * as util from "./util";
-function testFunc() {
-    console.log("button");
-}
+import * as move from "./move";
 const panel = (items) => {
     const npcs = util.filterNPCs(items);
     const nodes = [];
@@ -47,7 +45,7 @@ const panel = (items) => {
 };
 const buttonHTML = document.querySelector("#button");
 if (buttonHTML != null) {
-    buttonHTML.addEventListener("click", testFunc);
+    buttonHTML.addEventListener("click", move.moveAll);
 }
 const panelHTML = document.querySelector("#panel");
 if (panelHTML != null) {
