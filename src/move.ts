@@ -1,4 +1,4 @@
-import OBR from "@owlbear-rodeo/sdk";
+import OBR, { Vector2 } from "@owlbear-rodeo/sdk";
 
 import * as state from "./state";
 import * as util from "./util";
@@ -6,6 +6,11 @@ import * as util from "./util";
 export async function moveAll() {
     const items = await OBR.scene.items.getItems();
     const npcs = util.filterNPCs(items);
+    
+    let newPositions : Record<string, Vector2> = {};
+    for (let npc of npcs) { // This is done outside of the following because it is async.
+        newPositions[npc.id] = await OBR.scene.grid.snapPosition(npc.position, 1, false, true);
+    }
     OBR.scene.items.updateItems(npcs, (nn) => {
         for (let npc of nn) {
     //        const pos1 = npc.position;
@@ -14,9 +19,7 @@ export async function moveAll() {
     //            const dist = await OBR.scene.grid.getDistance(pos1, target.position)
     //            console.log(`${util.getName(npc)}: ${dist}`);
     //        }
-
-            OBR.scene.grid.snapPosition(npc.position, 1, false, true)
-                .then((newPos) => { npc.position = newPos })
+            npc.position = newPositions[npc.id];
         }
     });
 }
