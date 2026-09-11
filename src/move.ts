@@ -20,8 +20,8 @@ export async function moveAll() {
         const target = util.getTarget(items, npc.meta.target);
         if (target === null) { continue; }
         const angle = Math.atan2(npc.position.y - target.position.y, npc.position.x - target.position.x);
-        newPositions[npc.id].x -= dpi * Math.cos(angle);
-        newPositions[npc.id].y -= dpi * Math.sin(angle);
+        newPositions[npc.id].x -= util.round(dpi * Math.cos(angle), dpi);
+        newPositions[npc.id].y -= util.round(dpi * Math.sin(angle), dpi);
     }
     OBR.scene.items.updateItems(npcs, (nn) => {
         for (let npc of nn) {

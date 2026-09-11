@@ -13,6 +13,11 @@ export function length(vec : Vector2) : number {
     return distance(vec, { x : 0, y : 0 });
 }
 
+// Round x to the nearest multiple of y.
+export function round(x : number, y : number) : number {
+    return y * Math.round(x / y);
+}
+
 // Keep only those items which implement the NPC interface; namely, that have
 // metadata that is of the correct type.
 export function filterNPCs(items: Item[]) : state.NPC[] {
