@@ -1,4 +1,4 @@
-import{a as e,i as t,n,r,s as i,t as a}from"./util-DSV7c2X_.js";async function o(){let e=await i.scene.items.getItems(),t=a(e),n={};for(let e of t)n[e.id]=await i.scene.grid.snapPosition(e.position,1,!1,!0);i.scene.items.updateItems(t,t=>{for(let i of t)r(e,i.meta.target)!==null&&(i.position=n[i.id])})}var s=i=>{let o=a(i),s=[];for(let a of o){let o=document.createElement(`li`),c=n(a),l=a.meta,u=r(i,l.target),d=u==null?`No target`:`Target: ${n(u)}`;switch(l.kind){case t:o.innerHTML=`
+import{a as e,i as t,n,r,s as i,t as a}from"./util-DSV7c2X_.js";async function o(){let e=await i.scene.items.getItems(),t=a(e),n=await i.scene.grid.getDpi(),o={};for(let e of t)o[e.id]=await i.scene.grid.snapPosition(e.position,1,!1,!0),o[e.id].y+=n;i.scene.items.updateItems(t,t=>{for(let n of t)r(e,n.meta.target)!==null&&(n.position=o[n.id])})}var s=i=>{let o=a(i),s=[];for(let a of o){let o=document.createElement(`li`),c=n(a),l=a.meta,u=r(i,l.target),d=u==null?`No target`:`Target: ${n(u)}`;switch(l.kind){case t:o.innerHTML=`
                     <p>${c}</p>
 
                     <ul>
