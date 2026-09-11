@@ -87,12 +87,12 @@ function angleToAction(angle, gridType) {
     const y = Math.round(Math.sin(angle));
     let result = "";
     switch (y) {
-        case -1:
-            result += "S";
-            break;
-        case 0: break;
         case 1:
             result += "N";
+            break;
+        case 0: break;
+        case -1:
+            result += "S";
             break;
     }
     switch (x) {

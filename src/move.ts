@@ -86,9 +86,9 @@ function angleToAction(angle : number, gridType : "Square") : Action { // TODO o
 
     let result = "";
     switch (y) {
-        case -1: result += "S"; break;
-        case 0 :                break;
         case 1 : result += "N"; break;
+        case 0 :                break;
+        case -1: result += "S"; break;
     }
     switch (x) {
         case -1: result += "W"; break;
