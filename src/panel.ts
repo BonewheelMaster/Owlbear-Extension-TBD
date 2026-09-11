@@ -3,6 +3,13 @@ import OBR, { Item, Image } from "@owlbear-rodeo/sdk";
 import * as state from "./state";
 import * as util from "./util";
 
+function testFunc() {
+    console.log("button");
+}
+
+const buttonHTML = document.querySelector("#button")
+if (buttonHTML != null) { buttonHTML.innerHTML = '<button onclick="testFunc()">move all</button>'; }
+
 const panelHTML = document.querySelector("#panel")
 if (panelHTML != null) { panelHTML.innerHTML = '<ul id="list"></ul>'; }
 
