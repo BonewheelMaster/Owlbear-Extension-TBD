@@ -16,13 +16,14 @@ export async function moveAll() {
         newPositions[npc.id] = await OBR.scene.grid.snapPosition(npc.position, 1, false, true);
         const target = util.getTarget(items, npc.meta.target);
         if (target === null) { continue; }
+        const targetPos = await OBR.scene.grid.snapPosition(target.position, 1, false, true);
 
         // FIXME: if speed is not a multiple of 5 this will move more than allowed.
         let expendedMovement = 0;
         while (expendedMovement < npc.meta.speed 
-            && util.distance(newPositions[npc.id], target.position) >= 2*dpi) { // TODO same as below
-            const angle = Math.atan2( newPositions[npc.id].y - target.position.y
-                                    , newPositions[npc.id].x - target.position.x);
+            && util.distance(newPositions[npc.id], targetPos) >= 2*dpi) { // TODO same as below
+            const angle = Math.atan2( newPositions[npc.id].y - targetPos.y
+                                    , newPositions[npc.id].x - targetPos.x);
             newPositions[npc.id].x -= util.round(dpi * Math.cos(angle), dpi);
             newPositions[npc.id].y -= util.round(dpi * Math.sin(angle), dpi);
             expendedMovement += 5 // TODO hardcoded value for grid scale
