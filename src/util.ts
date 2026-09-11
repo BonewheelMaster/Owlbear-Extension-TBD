@@ -6,7 +6,7 @@ export const ID    = "Owlbear-Extension-TBD/io.github.bonewheelmaster";
 export const STATE = `${ID}/state`
 
 export function distance(p1 : Vector2, p2 : Vector2) : number {
-    return Math.sqrt((p1.x-p1.x)**2 + (p2.y-p2.y)**2);
+    return Math.sqrt((p2.x-p1.x)**2 + (p2.y-p1.y)**2);
 }
 
 export function length(vec : Vector2) : number {
