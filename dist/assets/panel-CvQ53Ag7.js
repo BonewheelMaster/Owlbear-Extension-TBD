@@ -1,4 +1,4 @@
-import{a as e,i as t,n,r,s as i,t as a}from"./util-DSV7c2X_.js";async function o(){let e=await i.scene.items.getItems(),t=a(e);for(let e of t){let a=e.position,o=r(t,e.meta.target);o!==null&&console.log(`${n(e)}: ${i.scene.grid.getDistance(a,o.position)}`)}}var s=i=>{let o=a(i),s=[];for(let a of o){let o=document.createElement(`li`),c=n(a),l=a.meta,u=r(i,l.target),d=u==null?`No target`:`Target: ${n(u)}`;switch(l.kind){case t:o.innerHTML=`
+import{a as e,i as t,n,r,s as i,t as a}from"./util-DSV7c2X_.js";async function o(){let e=await i.scene.items.getItems(),t=a(e);for(let a of t){let t=a.position,o=r(e,a.meta.target);o!==null&&console.log(`${n(a)}: ${i.scene.grid.getDistance(t,o.position)}`)}}var s=i=>{let o=a(i),s=[];for(let a of o){let o=document.createElement(`li`),c=n(a),l=a.meta,u=r(i,l.target),d=u==null?`No target`:`Target: ${n(u)}`;switch(l.kind){case t:o.innerHTML=`
                     <p>${c}</p>
 
                     <ul>
