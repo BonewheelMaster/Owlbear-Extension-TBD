@@ -1,9 +1,13 @@
-import OBR, { Item } from "@owlbear-rodeo/sdk";
+import OBR, { Item, Vector2 } from "@owlbear-rodeo/sdk";
 
 import * as state from "./state";
 
 export const ID    = "Owlbear-Extension-TBD/io.github.bonewheelmaster";
 export const STATE = `${ID}/state`
+
+export function distance(p1 : Vector2, p2 : Vector2) : number {
+    return Math.sqrt((p1.x-p1.x)**2 + (p2.y-p2.y)**2);
+}
 
 // Keep only those items which implement the NPC interface; namely, that have
 // metadata that is of the correct type.

@@ -8,6 +8,8 @@ export async function moveAll() {
     const npcs = util.filterNPCs(items);
     
     // TODO handle other grid types, namely hexes
+    // NOTE Beeline strategy
+    // TODO handle collision
     const dpi = await OBR.scene.grid.getDpi();
     let newPositions : Record<string, Vector2> = {};
     for (let npc of npcs) { // This is done outside of the following because it is async.
