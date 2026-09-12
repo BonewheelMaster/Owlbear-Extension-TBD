@@ -4,10 +4,10 @@ import * as util from "./util";
 // TODO change below to correct name
 const ID = "Owlbear-Extension-TBD/io.github.bonewheelmaster";
 const STATE = `${ID}/state`;
-function itemInfo(context) {
+export function itemInfo(context) {
     console.log(context.items);
 }
-function hardcodeId(context) {
+export function hardcodeId(context) {
     OBR.scene.items.updateItems(context.items, (items) => {
         const npcs = util.filterNPCs(items);
         for (let npc of npcs) {
@@ -15,21 +15,30 @@ function hardcodeId(context) {
         }
     });
 }
-function addToken(context) {
+export function addToken(context) {
     OBR.scene.items.updateItems(context.items, (items) => {
         for (let item of items) {
             item.metadata[STATE] = state.initMeleeAI;
         }
     });
 }
-function removeToken(context) {
+export function removeToken(context) {
     OBR.scene.items.updateItems(context.items, (items) => {
         for (let item of items) {
             item.metadata[STATE] = {};
         }
     });
 }
-const menuInfo = {
+export const NPCDisabledFilter = { every: [{ key: "layer", value: "CHARACTER" },
+        { key: ["metadata", STATE, "enabled"], value: true, operator: "!=" }
+    ],
+    roles: ["GM"] };
+export const NPCEnabledFilter = { every: [{ key: "layer", value: "CHARACTER" },
+        { key: ["metadata", STATE, "enabled"], value: true }
+    ],
+    roles: ["GM"]
+};
+export const menuInfo = {
     id: ID + "/menuInfo",
     // TODO see if these urls can be relative
     icons: [{ icon: "https://bonewheelmaster.github.io/Owlbear-Extension-TBD/panel.svg",
@@ -39,7 +48,7 @@ const menuInfo = {
     onClick: (itemInfo),
 };
 // Requires that the token is already initialized.
-const menuHardcodeId = {
+export const menuHardcodeId = {
     id: ID + "/hardcodeId",
     icons: [{ icon: "https://bonewheelmaster.github.io/Owlbear-Extension-TBD/panel.svg",
             label: "Hardcode target ID",
@@ -47,33 +56,25 @@ const menuHardcodeId = {
         }],
     onClick: (hardcodeId),
 };
-const menuAdd = {
+export const menuAdd = {
     id: ID + "/menuAdd",
     icons: [{ icon: "https://bonewheelmaster.github.io/Owlbear-Extension-TBD/panel.svg",
-            label: "Instill thought",
-            filter: { every: [{ key: "layer", value: "CHARACTER" },
-                    { key: ["metadata", STATE, "enabled"], value: true, operator: "!=" }
-                ],
-                roles: ["GM"] }
+            label: "Enable NPC",
+            filter: NPCDisabledFilter
         }],
     onClick: (addToken),
 };
-const menuRemove = {
-    id: ID + "/menuRemove",
+export const menuSettings = {
+    id: ID + "/menuSettings",
     icons: [{ icon: "https://bonewheelmaster.github.io/Owlbear-Extension-TBD/panel.svg",
-            label: "Uninstill thought",
-            filter: { every: [{ key: "layer", value: "CHARACTER" },
-                    { key: ["metadata", STATE, "enabled"], value: true }
-                ],
-                roles: ["GM"]
-            }
+            label: "NPC Settings",
+            filter: NPCEnabledFilter
         }],
     embed: { url: "https://bonewheelmaster.github.io/Owlbear-Extension-TBD/settings-menu.html" },
-    onClick: (removeToken),
 };
 export function main() {
     OBR.contextMenu.create(menuInfo);
     OBR.contextMenu.create(menuAdd);
-    OBR.contextMenu.create(menuRemove);
+    OBR.contextMenu.create(menuSettings);
     OBR.contextMenu.create(menuHardcodeId);
 }

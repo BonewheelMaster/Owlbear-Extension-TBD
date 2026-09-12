@@ -8,11 +8,11 @@ import * as util from "./util";
 const ID    = "Owlbear-Extension-TBD/io.github.bonewheelmaster";
 const STATE = `${ID}/state`
 
-function itemInfo(context : ContextMenuContext) {
+export function itemInfo(context : ContextMenuContext) {
     console.log(context.items);
 }
 
-function hardcodeId(context : ContextMenuContext) {
+export function hardcodeId(context : ContextMenuContext) {
     OBR.scene.items.updateItems(context.items, (items) => {
         const npcs = util.filterNPCs(items);
         for (let npc of npcs) {
@@ -21,7 +21,7 @@ function hardcodeId(context : ContextMenuContext) {
     });
 }
 
-function addToken(context : ContextMenuContext) {
+export function addToken(context : ContextMenuContext) {
     OBR.scene.items.updateItems(context.items, (items) => {
         for (let item of items) {
             item.metadata[STATE] = state.initMeleeAI
@@ -29,7 +29,7 @@ function addToken(context : ContextMenuContext) {
     });
 }
 
-function removeToken(context : ContextMenuContext) {
+export function removeToken(context : ContextMenuContext) {
     OBR.scene.items.updateItems(context.items, (items) => {
         for (let item of items) {
             item.metadata[STATE] = {}
@@ -37,7 +37,19 @@ function removeToken(context : ContextMenuContext) {
     });
 }
 
-const menuInfo = {
+export const NPCDisabledFilter = { every: [ { key: "layer", value: "CHARACTER" }
+                                   , { key: ["metadata", STATE, "enabled"], value: true, operator: "!=" } as KeyFilter
+                                   ]
+                          , roles: ["GM"]
+                          } as ContextMenuIconFilter
+
+export const NPCEnabledFilter = { every: [ { key: "layer", value: "CHARACTER" }
+                                  , { key: ["metadata", STATE, "enabled"], value: true }
+                                  ]
+                         , roles: ["GM"]
+                         } as ContextMenuIconFilter
+
+export const menuInfo = {
     id: ID + "/menuInfo",
     // TODO see if these urls can be relative
     icons: [{ icon: "https://bonewheelmaster.github.io/Owlbear-Extension-TBD/panel.svg"
@@ -48,7 +60,7 @@ const menuInfo = {
 };
 
 // Requires that the token is already initialized.
-const menuHardcodeId = {
+export const menuHardcodeId = {
     id: ID + "/hardcodeId",
     icons: [{ icon: "https://bonewheelmaster.github.io/Owlbear-Extension-TBD/panel.svg"
             , label: "Hardcode target ID"
@@ -57,36 +69,28 @@ const menuHardcodeId = {
     onClick: (hardcodeId),
 };
 
-const menuAdd = {
+export const menuAdd = {
     id: ID + "/menuAdd",
     icons: [{ icon: "https://bonewheelmaster.github.io/Owlbear-Extension-TBD/panel.svg"
-            , label: "Instill thought"
-            , filter: { every: [ { key: "layer", value: "CHARACTER" }
-                               , { key: ["metadata", STATE, "enabled"], value: true, operator: "!=" } as KeyFilter
-                               ]
-                      , roles: ["GM"]
-                      } as ContextMenuIconFilter
+            , label: "Enable NPC"
+            , filter: NPCDisabledFilter
            }],
     onClick: (addToken),
 };
 
-const menuRemove = {
-    id: ID + "/menuRemove",
+
+export const menuSettings = {
+    id: ID + "/menuSettings",
     icons: [{ icon: "https://bonewheelmaster.github.io/Owlbear-Extension-TBD/panel.svg"
-            , label: "Uninstill thought"
-            , filter: { every: [ { key: "layer", value: "CHARACTER" }
-                               , { key: ["metadata", STATE, "enabled"], value: true }
-                               ]
-                      , roles: ["GM"]
-                      } as ContextMenuIconFilter
+            , label: "NPC Settings"
+            , filter: NPCEnabledFilter
             }],
     embed: { url: "https://bonewheelmaster.github.io/Owlbear-Extension-TBD/settings-menu.html" },
-    onClick: (removeToken),
 };
 
 export function main() {
     OBR.contextMenu.create(menuInfo);
     OBR.contextMenu.create(menuAdd);
-    OBR.contextMenu.create(menuRemove);
+    OBR.contextMenu.create(menuSettings);
     OBR.contextMenu.create(menuHardcodeId);
 }
