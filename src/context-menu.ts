@@ -79,8 +79,8 @@ const menuRemove = {
                                ]
                       , roles: ["GM"]
                       } as ContextMenuIconFilter
-            , embed: { url: "https://bonewheelmaster.github.io/Owlbear-Extension-TBD/settings-menu.html" }
             }],
+    embed: { url: "https://bonewheelmaster.github.io/Owlbear-Extension-TBD/settings-menu.html" },
     onClick: (removeToken),
 };
 

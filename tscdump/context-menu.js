@@ -66,8 +66,9 @@ const menuRemove = {
                     { key: ["metadata", STATE, "enabled"], value: true }
                 ],
                 roles: ["GM"]
-            },
-            embed: { url: "https://bonewheelmaster.github.io/Owlbear-Extension-TBD/settings-menu.html" } }],
+            }
+        }],
+    embed: { url: "https://bonewheelmaster.github.io/Owlbear-Extension-TBD/settings-menu.html" },
     onClick: (removeToken),
 };
 export function main() {
