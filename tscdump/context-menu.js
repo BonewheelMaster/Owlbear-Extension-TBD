@@ -31,6 +31,7 @@ function removeToken(context) {
 }
 const menuInfo = {
     id: ID + "/menuInfo",
+    // TODO see if these urls can be relative
     icons: [{ icon: "https://bonewheelmaster.github.io/Owlbear-Extension-TBD/panel.svg",
             label: "Info -> Console",
             filter: { roles: ["GM"] }
@@ -65,8 +66,8 @@ const menuRemove = {
                     { key: ["metadata", STATE, "enabled"], value: true }
                 ],
                 roles: ["GM"]
-            }
-        }],
+            },
+            embed: { url: "https://bonewheelmaster.github.io/Owlbear-Extension-TBD/settings-menu.html" } }],
     onClick: (removeToken),
 };
 export function main() {
