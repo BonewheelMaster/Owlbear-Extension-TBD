@@ -1,1 +1,0 @@
-import{a as e,d as t,n}from"./util-eD5njD03.js";import{r}from"./npc-operations-a4m6E-oH.js";async function i(){let i=await t.scene.items.getItems(),a=await t.player.getSelection();if(a===void 0)return;let o=a.map(t=>e(i,t)).filter(e=>e!==null);r({items:o,selectionBounds:n}),console.log(`Test`)}document.querySelector(`#disableButton`)?.addEventListener(`click`,i);
