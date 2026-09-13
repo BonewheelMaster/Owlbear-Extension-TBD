@@ -1,4 +1,4 @@
-import OBR, { Item, Vector2 } from "@owlbear-rodeo/sdk";
+import OBR, { Item, Vector2, BoundingBox } from "@owlbear-rodeo/sdk";
 
 import * as state from "./state";
 
@@ -56,3 +56,13 @@ export function getName(item : Item) {
     if (label == "") { return `${item.name}`; }
     else             { return `${label}`; }
 }
+
+export const origin : Vector2 = { x: 0, y: 0 };
+
+export const emptyBoundingBox : BoundingBox = {
+    min: origin,
+    max: origin,
+    width: 0,
+    height: 0,
+    center: origin
+};

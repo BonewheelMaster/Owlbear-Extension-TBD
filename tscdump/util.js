@@ -56,3 +56,11 @@ export function getName(item) {
         return `${label}`;
     }
 }
+export const origin = { x: 0, y: 0 };
+export const emptyBoundingBox = {
+    min: origin,
+    max: origin,
+    width: 0,
+    height: 0,
+    center: origin
+};
