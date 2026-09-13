@@ -12,7 +12,6 @@ export async function removeSelected() {
         .map((id) => { return util.getTarget(items, id); })
         .filter((item) => { return item !== null; });
     npcOps.removeToken({ items : selItems, selectionBounds: util.emptyBoundingBox });
-    console.log("Test");
 }
 
 const disableButton = document.querySelector("#disableButton");
