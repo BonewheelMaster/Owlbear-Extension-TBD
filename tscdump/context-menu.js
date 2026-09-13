@@ -1,8 +1,12 @@
 import OBR from "@owlbear-rodeo/sdk";
 import * as npcOps from "./npc-operations";
 import * as state from "./state";
+export function contextMap(f) {
+    return (context) => f(context.items);
+}
 export const NPCDisabledFilter = { every: [{ key: "layer", value: "CHARACTER" },
-        { key: ["metadata", state.STATE, "enabled"], value: true, operator: "!=" }
+        { key: ["metadata", state.STATE, "enabled"], value: true,
+            operator: "!=" }
     ],
     roles: ["GM"] };
 export const NPCEnabledFilter = { every: [{ key: "layer", value: "CHARACTER" },
@@ -26,7 +30,7 @@ export const menuHardcodeId = {
             label: "Hardcode target ID",
             filter: { roles: ["GM"] }
         }],
-    onClick: (npcOps.hardcodeId),
+    onClick: (contextMap(npcOps.hardcodeIds)),
 };
 export const menuAdd = {
     id: state.ID + "/menuAdd",
@@ -34,7 +38,7 @@ export const menuAdd = {
             label: "Enable NPC",
             filter: NPCDisabledFilter
         }],
-    onClick: (npcOps.addToken),
+    onClick: (contextMap(npcOps.addTokens)),
 };
 export const menuSettings = {
     id: state.ID + "/menuSettings",
