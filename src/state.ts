@@ -3,8 +3,12 @@ import OBR, { Item } from "@owlbear-rodeo/sdk";
 export const MELEE  = "MELEE";
 export const RANGED = "RANGED";
 
-export type NPC = Item & { meta: NPCAI }
+// The ID of this app, for use in metadata objects.
+export const ID = "Owlbear-Extension-TBD/io.github.bonewheelmaster";
+// The key in metadata that we have jurisdiction over
+export const STATE = `${ID}/state`
 
+export type NPC   = Item & { meta: NPCAI }
 export type NPCAI = MeleeAI | RangedAI;
 
 export type MeleeAI = {
