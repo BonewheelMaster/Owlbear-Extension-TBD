@@ -10,16 +10,19 @@ export function hardcodeIds(items) {
     });
 }
 export function addTokens(items) {
-    OBR.scene.items.updateItems(items, (items) => {
-        for (let item of items) {
-            item.metadata[state.STATE] = state.initMeleeAI;
-        }
-    });
+    updateTokens(state.initMeleeAI, items);
 }
 export function removeTokens(items) {
     OBR.scene.items.updateItems(items, (items) => {
         for (let item of items) {
             item.metadata[state.STATE] = {};
+        }
+    });
+}
+export function updateTokens(newState, items) {
+    OBR.scene.items.updateItems(items, (items) => {
+        for (let item of items) {
+            item.metadata[state.STATE] = newState;
         }
     });
 }
