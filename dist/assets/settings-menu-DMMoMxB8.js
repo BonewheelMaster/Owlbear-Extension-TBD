@@ -4,4 +4,4 @@ import{c as e,f as t,i as n,n as r,o as i,s as a}from"./util-Cy0QJfya.js";import
             <option selected value=${i} >Melee</option>
             <option          value=${e}>Ranged</option>
         </select>
-    `;let r=document.querySelector(`#npcTypeDropDown`);r!==null&&r.addEventListener(`change`,()=>{s(r.value,t)})});
+    `;let r=document.querySelector(`#npcTypeDropDown`);r!==null&&r.addEventListener(`change`,()=>{s(r.value,t),console.log(r.value)})});
