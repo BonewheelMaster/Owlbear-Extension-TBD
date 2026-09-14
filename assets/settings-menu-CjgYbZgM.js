@@ -4,4 +4,4 @@ import{c as e,f as t,i as n,n as r,o as i,s as a}from"./util-Cy0QJfya.js";import
             <option selected>Melee</option>
             <option         >Ranged</option>
         </select>
-    `;let r=document.querySelector(`#npcTypeDropDown`);r!==null&&r.addEventListener(`onchange`,()=>{switch(r.value){case`Melee`:s(i,t);case`Ranged`:s(e,t)}})});
+    `;let r=document.querySelector(`#npcTypeDropDown`);r!==null&&r.addEventListener(`change`,()=>{switch(r.value){case`Melee`:s(i,t);case`Ranged`:s(e,t)}})});
