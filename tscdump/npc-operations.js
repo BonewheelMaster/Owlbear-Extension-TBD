@@ -34,6 +34,8 @@ export function changeType(newType, items) {
             if (npc.meta.kind == newType) {
                 continue;
             }
+            console.log(newType);
+            console.log(npc);
             switch (newType) {
                 case state.MELEE:
                     npc.meta = state.initMeleeAI;

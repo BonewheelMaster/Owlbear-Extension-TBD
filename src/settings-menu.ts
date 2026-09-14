@@ -71,7 +71,7 @@ const menu = async () => {
 
     npcTypeDropDown.addEventListener("change", () => {
         npcOps.changeType(npcTypeDropDown.value as state.NPCAIType, selNPCs);
-        console.log(npcTypeDropDown.value);
+        console.log(selNPCs);
     });
 }
 
