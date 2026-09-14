@@ -58,22 +58,19 @@ const menu = async () => {
     const form     = document.querySelector("#Form");
     if (form === null) { return; }
 
-    // TODO handle other two returns types of settings.
+    // TODO handle the other two return types of settings.
     form.innerHTML = `
         <p>NPC Type: </p>
         <select id="npcTypeDropDown">
-            <option selected>Melee</option>
-            <option         >Ranged</option>
+            <option selected value=${state.MELEE} >Melee</option>
+            <option          value=${state.RANGED}>Ranged</option>
         </select>
     `;
     const npcTypeDropDown = document.querySelector("#npcTypeDropDown") as HTMLSelectElement;
     if (npcTypeDropDown === null) { return; }
 
     npcTypeDropDown.addEventListener("change", () => {
-        switch (npcTypeDropDown.value) {
-            case "Melee": npcOps.changeType(state.MELEE, selNPCs);
-            case "Ranged": npcOps.changeType(state.RANGED, selNPCs);
-        }
+        npcOps.changeType(npcTypeDropDown.value as state.NPCAIType, selNPCs);
     });
 }
 
