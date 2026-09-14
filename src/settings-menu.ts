@@ -69,7 +69,7 @@ const menu = async () => {
     const npcTypeDropDown = document.querySelector("#npcTypeDropDown") as HTMLSelectElement;
     if (npcTypeDropDown === null) { return; }
 
-    npcTypeDropDown.addEventListener("onchange", () => {
+    npcTypeDropDown.addEventListener("change", () => {
         switch (npcTypeDropDown.value) {
             case "Melee": npcOps.changeType(state.MELEE, selNPCs);
             case "Ranged": npcOps.changeType(state.RANGED, selNPCs);
