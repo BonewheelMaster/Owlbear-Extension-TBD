@@ -17,6 +17,20 @@ export const initRangedAI = {
     target: "",
     range: 60,
 };
+export function NPCAIEqual(npc1, npc2) {
+    if (npc1.kind == MELEE && npc2.kind == MELEE) {
+        return npc1.enabled == npc2.enabled
+            && npc2.speed == npc2.speed
+            && npc1.target == npc2.target;
+    }
+    if (npc1.kind == RANGED && npc2.kind == RANGED) {
+        return npc1.enabled == npc2.enabled
+            && npc2.speed == npc2.speed
+            && npc1.target == npc2.target
+            && npc1.range == npc2.range;
+    }
+    return false;
+}
 // Determine if the given object conforms to the NPCAI interface.
 export function validMetadata(meta) {
     if (typeof meta == "object"
