@@ -26,3 +26,22 @@ export function updateTokens(newState, items) {
         }
     });
 }
+export function changeType(newType, items) {
+    OBR.scene.items.updateItems(items, (items) => {
+        const npcs = util.filterNPCs(items);
+        for (let npc of npcs) {
+            // Don't want the other settings to change for no good reason.
+            if (npc.meta.kind == newType) {
+                continue;
+            }
+            switch (newType) {
+                case state.MELEE:
+                    npc.meta = state.initMeleeAI;
+                    break;
+                case state.RANGED:
+                    npc.meta = state.initRangedAI;
+                    break;
+            }
+        }
+    });
+}

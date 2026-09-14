@@ -16,35 +16,59 @@ export async function removeSelected() {
     const selItems = await getSelectedItems();
     npcOps.removeTokens(selItems);
 }
-// Get the current settings of all selected NPCs.
+export async function getSelectedNPCs() {
+    const selItems = await getSelectedItems();
+    return util.filterNPCs(selItems);
+}
+// Get the current settings of all given NPCs.
 //
 // The following describes how conflicts are resolved:
 //      If there are no conflicts (all selected NPCs have the same values set),
 //      then this will return those values.
 //      If there are conflicts but all NPCs are the same AI type, this will
 //      return that type.
-//      Otherwise, this will return "Disagreed". Also returns if nothing is selected.
-export async function getSelectedNPCSettings() {
-    const selItems = await getSelectedItems();
+//      Otherwise, this will return "Disagreed". Also returns this if nothing is selected.
+export function getNPCSettings(NPCs) {
     // Only the NPCs are cared about because this menu will not appear if a
     // non-npc is included in the selection.
-    const selNPCs = util.filterNPCs(selItems);
-    if (selNPCs.length >= 1) {
-        const refNPCAI = selNPCs[0].meta;
-        if (selNPCs.every((npc) => {
+    if (NPCs.length >= 1) {
+        const refNPCAI = NPCs[0].meta;
+        if (NPCs.every((npc) => {
             return state.NPCAIEqual(npc.meta, refNPCAI);
         })) {
             return refNPCAI;
         }
-        if (selNPCs.every((npc) => { return npc.meta.kind == refNPCAI.kind; })) {
+        if (NPCs.every((npc) => { return npc.meta.kind == refNPCAI.kind; })) {
             return refNPCAI.kind;
         }
     }
     return "Disagreed";
 }
 const menu = async () => {
-    const settings = await getSelectedNPCSettings();
-    console.log(settings);
+    const selNPCs = await getSelectedNPCs();
+    const settings = getNPCSettings(selNPCs);
+    const form = document.querySelector("#Form");
+    if (form === null) {
+        return;
+    }
+    // TODO handle other two returns types of settings.
+    form.innerHTML = `
+        <p>NPC Type: </p>
+        <select id="npcTypeDropDown">
+            <option selected>Melee</option>
+            <option         >Ranged</option>
+        </select>
+    `;
+    const npcTypeDropDown = document.querySelector("#npcTypeDropDown");
+    if (npcTypeDropDown === null) {
+        return;
+    }
+    npcTypeDropDown.addEventListener("onchange", () => {
+        switch (npcTypeDropDown.value) {
+            case "Melee": npcOps.changeType(state.MELEE, selNPCs);
+            case "Ranged": npcOps.changeType(state.RANGED, selNPCs);
+        }
+    });
 };
 const disableButton = document.querySelector("#disableButton");
 if (disableButton != null) {
