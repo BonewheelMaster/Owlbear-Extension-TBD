@@ -42,7 +42,7 @@ export async function getSelectedNPCSettings() {
     }
     return "Disagreed";
 }
-const menu = async (items) => {
+const menu = async () => {
     const settings = await getSelectedNPCSettings();
     console.log(settings);
 };
@@ -50,4 +50,4 @@ const disableButton = document.querySelector("#disableButton");
 if (disableButton != null) {
     disableButton.addEventListener("click", removeSelected);
 }
-OBR.scene.items.onChange(menu);
+OBR.onReady(menu);
